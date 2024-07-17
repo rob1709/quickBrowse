@@ -19,12 +19,12 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1044833
+              "duration": 502416
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
+            "keyword": "When ",
             "line": 5,
             "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk'",
             "match": {
@@ -32,7 +32,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 284042
+              "duration": 122124
             }
           },
           {
@@ -45,7 +45,94 @@
             },
             "result": {
               "status": "passed",
-              "duration": 66375
+              "duration": 56749
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "my bookmark list contains an entry for 'Amazon' with url 'www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 352375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "my bookmark list contains an entry for 'Reddit' with url 'old.reddit.com'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 51833
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "adding-bookmarks",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Adding bookmarks",
+    "tags": [],
+    "uri": "features/AddBookmarks.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "adding-bookmarks;bookmarks,-alphabetically-by-name",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Bookmarks, alphabetically by name",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46209
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "I add a bookmark called 'Reddit' for 'old.reddit.com'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49000
             }
           },
           {
@@ -58,7 +145,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 162415
+              "duration": 35333
             }
           },
           {
@@ -71,7 +158,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 212209
+              "duration": 160458
             }
           },
           {
@@ -84,7 +171,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 379457
+              "duration": 218333
             }
           }
         ],

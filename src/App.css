@@ -36,3 +36,45 @@
     transform: rotate(360deg);
   }
 }
+
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.bookmark-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.bookmark-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.bookmark-button:hover {
+  background-color: #0056b3;
+}
+
+.bookmark-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #007bff;
+  text-align: center;
+  line-height: 30px;
+  margin-right: 10px;
+  font-weight: bold;
+}

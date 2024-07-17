@@ -19,7 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "npm run cucumber",
-    "cucumber": "node ./node_modules/@cucumber/cucumber/bin/cucumber-js features/**/*.feature --require env/set-environment-variables.ts --require world/custom-world.ts --require features/step-definitions/**/*.ts --require hooks/**/*.ts  --require-module ts-node/register --format-options \"{\\\"snippetInterface\\\": \\\"async-await\\\"}\"  --format html:reports/report.html --format summary --format @cucumber/pretty-formatter --format cucumber-console-formatter --publish-quiet",
+    "cucumber": "node ./node_modules/@cucumber/cucumber/bin/cucumber-js features/**/*.feature --require env/set-environment-variables.ts --require world/custom-world.ts --require features/step-definitions/**/*.ts --require hooks/**/*.ts  --require-module ts-node/register --format-options \"{\\\"snippetInterface\\\": \\\"async-await\\\"}\"  --format html:reports/report.html --format summary --format @cucumber/pretty-formatter --format cucumber-console-formatter",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
