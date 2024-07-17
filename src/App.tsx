@@ -1,4 +1,6 @@
 import './App.css';
+import './styles/colourThemes.css';
+import { useState } from 'react';
 import { BookmarkCollection } from './model/BookmarkCollection';
 import { Bookmark } from './model/Bookmark';
 
@@ -13,10 +15,20 @@ const sampleBookmarks = new BookmarkCollection([
 ]);
 
 function App() {
-  const bookmarks = sampleBookmarks.bookmarksOrderedByName; // Assuming this returns the array of bookmarks
+  const [theme, setTheme] = useState('light');
+  const bookmarks = sampleBookmarks.bookmarksOrderedByName;
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('colour-theme', newTheme);
+  };
 
   return (
     <div className="App">
+      <button onClick={toggleTheme}>
+        Switch to {theme === 'light' ? 'Dark' : 'Light'} Theme
+      </button>
       <div className="bookmark-panel">
         {bookmarks.map((bookmark, index) => (
           <a

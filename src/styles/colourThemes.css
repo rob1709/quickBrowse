@@ -1,0 +1,18 @@
+/* src/styles/variables.css */
+:root {
+    --primary-color: #e9eff5;
+    --secondary-color: #d3d9e0;
+    --background-color: #ffffff;
+    --text-color: #333;
+    --icon-bg-color: #ffffff;
+    --icon-color: #1960ab;
+  }
+  
+  [colour-theme="dark"] {
+    --primary-color: #333;
+    --secondary-color: #555;
+    --background-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --icon-bg-color: #444;
+    --icon-color: #ff9c50;
+  }
