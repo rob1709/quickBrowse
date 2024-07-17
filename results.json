@@ -1,0 +1,50 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "sample-feature;sample-scenario",
+        "keyword": "Scenario",
+        "line": 2,
+        "name": "Sample scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "I visit the homepage",
+            "match": {
+              "location": "features/step_definitions/sample.steps.ts:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 446541
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 4,
+            "name": "I should see the title \"Page Title\"",
+            "match": {
+              "location": "features/step_definitions/sample.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 127416
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "sample-feature",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Sample feature",
+    "tags": [],
+    "uri": "features/sample.feature"
+  }
+]
