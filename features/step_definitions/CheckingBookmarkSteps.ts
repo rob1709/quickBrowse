@@ -20,3 +20,10 @@ Then(/^bookmark (\d+) is for '([^']+)' with url '([^']+)'$/, function (positionI
   assert.equal(bookmarks[positionIndexedAtOne - 1].name, bookmarkName, `Expected bookmark at position ${positionIndexedAtOne} to have name ${bookmarkName}`);
   assert.equal(bookmarks[positionIndexedAtOne - 1].url, bookmarkUrl, `Expected bookmark at position ${positionIndexedAtOne} to have URL ${bookmarkUrl}`);
 });
+Then('the favicon for {string} is {string}', (shortcutName: string, expectedFavicon: string) => {
+    const bookmarks = TestContext.instance.bookmarkCollection.bookmarksOrderedByName;
+    const bookmarkWithMatchingName = bookmarks.find(bookmark => bookmark.name === shortcutName);
+    assert(bookmarkWithMatchingName !== undefined, 'Bookmark not found in collection. Collection contained ' + TestContext.instance.bookmarkCollection.print());
+    assert.equal(bookmarkWithMatchingName.favicon, expectedFavicon, `Expected Favicon to be "${expectedFavicon}", but found "${bookmarkWithMatchingName.favicon}"`);
+
+})

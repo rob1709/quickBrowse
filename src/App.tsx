@@ -38,7 +38,7 @@ function App() {
             rel="noopener noreferrer"
             className="bookmark-button"
           >
-            <div className="bookmark-icon">{bookmark.name.charAt(0)}</div>
+            <img src={bookmark.favicon} alt={`${bookmark.name.charAt(0)}`} className="bookmark-icon" />
             {bookmark.name}
           </a>
         ))}
