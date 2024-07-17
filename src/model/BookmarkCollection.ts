@@ -18,6 +18,10 @@ export class BookmarkCollection {
         return new BookmarkCollection(newBookmarks);
     }
 
+    public print() {
+        return this.bookmarks.length === 0 ? "no bookmarks" : "[" + this.bookmarksOrderedByName.join(",") + "]";
+    } 
+
     public static readonly empty: BookmarkCollection = new BookmarkCollection([]);
 
 }

@@ -4,7 +4,8 @@ export class TestContext {
 
     public static instance: TestContext = new TestContext();
 
-    public bookmarkCollection: BookmarkCollection = new BookmarkCollection([]);
+    public bookmarkCollection: BookmarkCollection = BookmarkCollection.empty;
+
 
     private constructor() {}
 }

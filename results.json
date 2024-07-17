@@ -4,35 +4,74 @@
     "elements": [
       {
         "description": "",
-        "id": "sample-feature;sample-scenario",
+        "id": "adding-bookmarks;adding-two-bookmarks",
         "keyword": "Scenario",
-        "line": 2,
-        "name": "Sample scenario",
+        "line": 3,
+        "name": "Adding two bookmarks",
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 3,
-            "name": "I visit the homepage",
+            "line": 4,
+            "name": "I have an empty list of bookmarks",
             "match": {
-              "location": "features/step_definitions/sample.steps.ts:4"
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
             },
             "result": {
               "status": "passed",
-              "duration": 446541
+              "duration": 574165
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 538290
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "I add a bookmark called 'Reddit' for 'old.reddit.com'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 75291
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 4,
-            "name": "I should see the title \"Page Title\"",
+            "line": 7,
+            "name": "my bookmark list contains an entry for 'Amazon' with url 'www.amazon.co.uk'",
             "match": {
-              "location": "features/step_definitions/sample.steps.ts:8"
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:6"
             },
             "result": {
               "status": "passed",
-              "duration": 127416
+              "duration": 506291
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "my bookmark list contains an entry for 'Reddit' with url 'old.reddit.com'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60999
             }
           }
         ],
@@ -40,11 +79,11 @@
         "type": "scenario"
       }
     ],
-    "id": "sample-feature",
+    "id": "adding-bookmarks",
     "line": 1,
     "keyword": "Feature",
-    "name": "Sample feature",
+    "name": "Adding bookmarks",
     "tags": [],
-    "uri": "features/sample.feature"
+    "uri": "features/AddingBookmarks.feature"
   }
 ]
