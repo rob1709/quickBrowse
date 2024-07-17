@@ -1,8 +1,10 @@
-import './App.css';
+import './styles/App.css';
 import './styles/colourThemes.css';
 import { useState } from 'react';
 import { BookmarkCollection } from './model/BookmarkCollection';
 import { Bookmark } from './model/Bookmark';
+import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';
+import { ThemeSelector } from './components/ThemeSelector';
 
 const sampleBookmarks = new BookmarkCollection([
     new Bookmark("Amazon", "https://www.amazon.co.uk", ""),
@@ -15,34 +17,12 @@ const sampleBookmarks = new BookmarkCollection([
 ]);
 
 function App() {
-  const [theme, setTheme] = useState('light');
-  const bookmarks = sampleBookmarks.bookmarksOrderedByName;
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('colour-theme', newTheme);
-  };
 
   return (
     <div className="App">
-      <button onClick={toggleTheme}>
-        Switch to {theme === 'light' ? 'Dark' : 'Light'} Theme
-      </button>
-      <div className="bookmark-panel">
-        {bookmarks.map((bookmark, index) => (
-          <a
-            key={index}
-            href={bookmark.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bookmark-button"
-          >
-            <img src={bookmark.favicon} alt={`${bookmark.name.charAt(0)}`} className="bookmark-icon" />
-            {bookmark.name}
-          </a>
-        ))}
-      </div>
+      <ThemeSelector/>
+      <BookmarkCollectionPanel bookmarkCollection={sampleBookmarks} />
     </div>
   );
 }
