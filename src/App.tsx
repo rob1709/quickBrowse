@@ -1,6 +1,5 @@
 import './styles/App.css';
 import './styles/colourThemes.css';
-import { useState } from 'react';
 import { BookmarkCollection } from './model/BookmarkCollection';
 import { Bookmark } from './model/Bookmark';
 import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';

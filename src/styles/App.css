@@ -15,18 +15,26 @@
 .bookmark-button {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 10px;
   background-color: var(--primary-color);
   color: var(--text-color);
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.2s, color 0.2s; /* Added color transition */
+  transition: background-color 0.2s;
   position: relative;
 }
 
-.bookmark-button:hover {
-  background-color: var(--secondary-color);
+.bookmark-text {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit; /* Ensures the color is inherited from parent */
+  flex-grow: 1; /* Makes the text area grow to occupy available space */
+  transition: color 0.2s; /* Added transition for color */
+}
+
+.bookmark-text:hover {
   color: var(--icon-color); /* Change text color on hover */
 }
 
@@ -42,9 +50,20 @@
   margin-right: 10px;
   font-weight: bold;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2); /* Added drop-shadow */
-  transition: box-shadow 0.2s; /* Added box-shadow transition */
+  transition: box-shadow 0.2s;
 }
 
 .bookmark-button:hover .bookmark-icon {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.edit-icon {
+  margin-left: 10px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: color 0.2s; /* Added transition for color */
+}
+
+.edit-icon:hover {
+  color: var(--icon-color); /* Change color on hover */
 }
