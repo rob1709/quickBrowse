@@ -24,4 +24,8 @@ export class BookmarkCollection {
 
     public static readonly empty: BookmarkCollection = new BookmarkCollection([]);
 
+    public findBookmarkForKeyboardShortcut(keyPress: string) {
+        return this.bookmarks.find(bookmark => bookmark.shortcutKey === keyPress);
+    }
+
 }

@@ -4,10 +4,10 @@
     "elements": [
       {
         "description": "",
-        "id": "bookmark-favicons;bookmarks-should-include-the-favicon",
+        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-that's-defined",
         "keyword": "Scenario",
         "line": 3,
-        "name": "Bookmarks should include the favicon",
+        "name": "Pressing a keyboard shortcut that's defined",
         "steps": [
           {
             "arguments": [],
@@ -19,198 +19,59 @@
             },
             "result": {
               "status": "passed",
-              "duration": 506500
+              "duration": 432416
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 5,
-            "name": "I add a bookmark called 'Amazon' for 'https://www.amazon.co.uk'",
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
             "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
             },
             "result": {
               "status": "passed",
-              "duration": 469959
+              "duration": 228832
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 6,
-            "name": "I add a bookmark called 'Reddit' for 'https://old.reddit.com'",
+            "name": "I add a bookmark called 'Reddit' for 'old.reddit.com' with shortcut 'i'",
             "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
             },
             "result": {
               "status": "passed",
-              "duration": 79416
+              "duration": 74707
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 7,
-            "name": "I view bookmarks alphabetically by name",
+            "name": "the extension is open and I press 'a'",
             "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:7"
+              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
             },
             "result": {
               "status": "passed",
-              "duration": 197208
+              "duration": 138749
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 8,
-            "name": "the favicon for 'Amazon' is 'https://www.amazon.co.uk/favicon.ico'",
+            "name": "the URL is 'www.amazon.co.uk'",
             "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:23"
+              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
             },
             "result": {
               "status": "passed",
-              "duration": 151166
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 9,
-            "name": "the favicon for 'Reddit' is 'https://old.reddit.com/favicon.ico'",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 176249
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "bookmark-favicons;bookmarks-should-include-the-favicon-even-if-the-bookmark-url-doesn't-point-at-the-root-of-the-webpage",
-        "keyword": "Scenario",
-        "line": 11,
-        "name": "Bookmarks should include the favicon even if the bookmark URL doesn't point at the root of the webpage",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 12,
-            "name": "I have an empty list of bookmarks",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 39333
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 13,
-            "name": "I add a bookmark called 'BBC Football' for 'https://www.bbc.co.uk/sport/football'",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 205291
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 14,
-            "name": "I view bookmarks alphabetically by name",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 28457
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "the favicon for 'BBC Football' is 'https://www.bbc.co.uk/favicon.ico'",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1008499
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "bookmark-favicons;bookmarks-without-https-should-still-work",
-        "keyword": "Scenario",
-        "line": 17,
-        "name": "Bookmarks without https should still work",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 18,
-            "name": "I have an empty list of bookmarks",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 152166
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 19,
-            "name": "I add a bookmark called 'BBC Football' for 'www.bbc.co.uk/sport/football'",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 329249
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 20,
-            "name": "I view bookmarks alphabetically by name",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 38457
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 21,
-            "name": "the favicon for 'BBC Football' is 'https://www.bbc.co.uk/favicon.ico'",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 132667
+              "duration": 80624
             }
           }
         ],
@@ -218,237 +79,11 @@
         "type": "scenario"
       }
     ],
-    "id": "bookmark-favicons",
+    "id": "keyboard-shortcuts",
     "line": 1,
     "keyword": "Feature",
-    "name": "Bookmark favicons",
+    "name": "Keyboard Shortcuts",
     "tags": [],
-    "uri": "features/Favicons.feature"
-  },
-  {
-    "description": "",
-    "elements": [
-      {
-        "description": "",
-        "id": "bookmark-favicons;bookmarks-should-include-the-favicon",
-        "keyword": "Scenario",
-        "line": 3,
-        "name": "Bookmarks should include the favicon",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 4,
-            "name": "I have an empty list of bookmarks",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 88792
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 5,
-            "name": "I add a bookmark called 'Amazon' for 'https://www.amazon.co.uk'",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 115417
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 6,
-            "name": "I add a bookmark called 'Reddit' for 'https://old.reddit.com'",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 42165
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 7,
-            "name": "I view bookmarks alphabetically by name",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 124083
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 8,
-            "name": "the favicon for 'Amazon' is 'https://www.amazon.co.uk/favicon.ico'",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 36291
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 9,
-            "name": "the favicon for 'Reddit' is 'https://old.reddit.com/favicon.ico'",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 90041
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "bookmark-favicons;bookmarks-should-include-the-favicon-even-if-the-bookmark-url-doesn't-point-at-the-root-of-the-webpage",
-        "keyword": "Scenario",
-        "line": 11,
-        "name": "Bookmarks should include the favicon even if the bookmark URL doesn't point at the root of the webpage",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 12,
-            "name": "I have an empty list of bookmarks",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 27875
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 13,
-            "name": "I add a bookmark called 'BBC Football' for 'https://www.bbc.co.uk/sport/football'",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 50125
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 14,
-            "name": "I view bookmarks alphabetically by name",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 20833
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "the favicon for 'BBC Football' is 'https://www.bbc.co.uk/favicon.ico'",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 222041
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "bookmark-favicons;bookmarks-without-https-should-still-work",
-        "keyword": "Scenario",
-        "line": 17,
-        "name": "Bookmarks without https should still work",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 18,
-            "name": "I have an empty list of bookmarks",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 134415
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 19,
-            "name": "I add a bookmark called 'BBC Football' for 'www.bbc.co.uk/sport/football'",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 59000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 20,
-            "name": "I view bookmarks alphabetically by name",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 21957
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 21,
-            "name": "the favicon for 'BBC Football' is 'https://www.bbc.co.uk/favicon.ico'",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 424791
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      }
-    ],
-    "id": "bookmark-favicons",
-    "line": 1,
-    "keyword": "Feature",
-    "name": "Bookmark favicons",
-    "tags": [],
-    "uri": "features/favicons.feature"
+    "uri": "features/KeyboardShortcut.feature"
   }
 ]

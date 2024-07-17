@@ -18,5 +18,14 @@
   "icons": {
     "48": "logo48.png",
     "96": "logo96.png"
+  },
+  "commands": {
+  "_execute_browser_action": {
+    "suggested_key": {
+      "default": "Ctrl+Q",
+      "mac": "Ctrl+Q"
+    }
   }
+}
+
 }

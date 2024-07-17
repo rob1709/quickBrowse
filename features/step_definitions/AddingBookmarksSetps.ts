@@ -11,3 +11,7 @@ When('I add a bookmark called {string} for {string}', (name: string, url: string
   TestContext.instance.bookmarkCollection = TestContext.instance.bookmarkCollection.addBookmark(new Bookmark(name, url, ""));
 })
 
+Given('I add a bookmark called {string} for {string} with shortcut {string}', (name: string, url: string, shortcut: string) => {
+  TestContext.instance.bookmarkCollection = TestContext.instance.bookmarkCollection.addBookmark(new Bookmark(name, url, shortcut));
+})
+
