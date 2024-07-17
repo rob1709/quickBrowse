@@ -19,12 +19,12 @@
             },
             "result": {
               "status": "passed",
-              "duration": 574165
+              "duration": 1044833
             }
           },
           {
             "arguments": [],
-            "keyword": "When ",
+            "keyword": "And ",
             "line": 5,
             "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk'",
             "match": {
@@ -32,7 +32,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 538290
+              "duration": 284042
             }
           },
           {
@@ -45,33 +45,46 @@
             },
             "result": {
               "status": "passed",
-              "duration": 75291
+              "duration": 66375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I view bookmarks alphabetically by name",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 162415
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 7,
-            "name": "my bookmark list contains an entry for 'Amazon' with url 'www.amazon.co.uk'",
+            "line": 8,
+            "name": "bookmark 1 is for 'Amazon' with url 'www.amazon.co.uk'",
             "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:6"
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:18"
             },
             "result": {
               "status": "passed",
-              "duration": 506291
+              "duration": 212209
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
-            "line": 8,
-            "name": "my bookmark list contains an entry for 'Reddit' with url 'old.reddit.com'",
+            "keyword": "Then ",
+            "line": 9,
+            "name": "bookmark 2 is for 'Reddit' with url 'old.reddit.com'",
             "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:6"
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:18"
             },
             "result": {
               "status": "passed",
-              "duration": 60999
+              "duration": 379457
             }
           }
         ],
@@ -84,6 +97,6 @@
     "keyword": "Feature",
     "name": "Adding bookmarks",
     "tags": [],
-    "uri": "features/AddingBookmarks.feature"
+    "uri": "features/GetBookmarks.feature"
   }
 ]
