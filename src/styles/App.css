@@ -1,7 +1,7 @@
 /* src/App.css */
 .App {
   text-align: center;
-  padding: 20px;
+  padding-top:0px;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -10,6 +10,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  padding:20px;
 }
 
 .bookmark-button {
@@ -66,4 +67,19 @@
 
 .edit-icon:hover {
   color: var(--icon-color); /* Change color on hover */
+}
+
+h1 {
+  font-weight: 100;
+  margin:0;
+  margin-bottom:100;
+  font-size: 130%;
+  text-align: left;
+  color: var(--header-text);
+  
+}
+
+.headerBar {
+  background-color: var(--header-background);
+  
 }

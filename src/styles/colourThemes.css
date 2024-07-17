@@ -1,5 +1,17 @@
 /* src/styles/variables.css */
 :root {
+  --primary-color: #444;
+  --secondary-color: #555;
+  --background-color: #262626;
+  --text-color: #f0f0f0;
+  --icon-bg-color: #444;
+  --icon-color: #ff9c50;
+  --icon-color: #75acff;
+  --header-background: #333;
+  --header-text: #888;
+  }
+
+  [colour-theme="light"] {
     --primary-color: #e9eff5;
     --secondary-color: #d3d9e0;
     --background-color: #ffffff;
@@ -16,4 +28,6 @@
     --icon-bg-color: #444;
     --icon-color: #ff9c50;
     --icon-color: #75acff;
+    --header-background: #333;
+    --header-text: #888;
   }

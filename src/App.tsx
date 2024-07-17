@@ -3,7 +3,7 @@ import './styles/colourThemes.css';
 import { BookmarkCollection } from './model/BookmarkCollection';
 import { Bookmark } from './model/Bookmark';
 import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';
-import { ThemeSelector } from './components/ThemeSelector';
+import { HeaderBar } from './components/HeaderBar';
 
 const sampleBookmarks = new BookmarkCollection([
     new Bookmark("Amazon", "https://www.amazon.co.uk", ""),
@@ -20,7 +20,6 @@ function App() {
 
   return (
     <div className="App">
-      <ThemeSelector/>
       <BookmarkCollectionPanel bookmarkCollection={sampleBookmarks} />
     </div>
   );
