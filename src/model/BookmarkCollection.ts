@@ -1,3 +1,4 @@
+import { KeyObject } from "crypto";
 import { Bookmark } from "./Bookmark";
 
 export class BookmarkCollection {
@@ -32,7 +33,21 @@ export class BookmarkCollection {
     public static readonly empty: BookmarkCollection = new BookmarkCollection([]);
 
     public findBookmarkForKeyboardShortcut(keyPress: string) {
-        return this.bookmarks.find(bookmark => bookmark.shortcutKey === keyPress);
+        var result = this.bookmarks.find(bookmark => bookmark.shortcutKey === keyPress);
+        if (result === undefined) {
+            var reverseCase = this.reverseCase(keyPress);
+            result = this.bookmarks.find(bookmark => bookmark.shortcutKey === reverseCase);
+        }
+        return result;
+    }
+
+    public reverseCase(keyPress: string) {
+        var keyPressLowerCase = keyPress.toLowerCase();
+        if (keyPressLowerCase !== keyPress) {
+            return keyPressLowerCase;
+        } else {
+            return keyPress.toUpperCase();
+        }   
     }
       
 
