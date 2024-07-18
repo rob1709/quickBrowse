@@ -1,10 +1,10 @@
 // src/components/AddOrEditBookmarkModal.tsx
 import React, { useState } from 'react';
 import { Bookmark } from '../model/Bookmark';
-import '../styles/App.css';
+import '../styles/addOrEditModal.css';
 import '../styles/colourThemes.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 interface AddOrEditBookmarkModalProps {
   bookmark: Bookmark;
@@ -24,37 +24,42 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed 
 
   return (
     <div className="add-edit-bookmark-modal">
-      <div className="modal-content">
+      <div className="modal-header">
         <h2>Edit Bookmark</h2>
-        <label>
-          Name:
+        <button className="close-button" onClick={modalClosed}>
+          <FontAwesomeIcon icon={faXmark} />
+        </button>
+      </div>
+      <div className="modal-content">
+        <div className="form-group">
+          <label>Name:</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-        </label>
-        <label>
-          URL:
+        </div>
+        <div className="form-group">
+          <label>URL:</label>
           <input
             type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
-        </label>
-        <label>
-          Shortcut Key:
+        </div>
+        <div className="form-group">
+          <label>Shortcut:</label>
           <input
             type="text"
             value={shortcutKey}
             onChange={(e) => setShortcutKey(e.target.value)}
           />
-        </label>
+        </div>
         <div className="modal-buttons">
           <button onClick={handleConfirm}>
             <FontAwesomeIcon icon={faCheck} /> Confirm
           </button>
-          <button onClick={modalClosed}>
+          <button className="cancel-button" onClick={modalClosed}>
             <FontAwesomeIcon icon={faTimes} /> Cancel
           </button>
         </div>
