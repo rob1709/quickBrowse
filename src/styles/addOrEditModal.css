@@ -5,8 +5,7 @@
   transform: translate(-50%, -50%);
   background-color: var(--background-color);
   color: var(--text-color);
-  padding: 0px;
-  padding-top: 0px;
+  padding: 0;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   width: 600px;
@@ -17,8 +16,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--primary-color);
-  padding: 10px;
-  padding-left: 20px;
+  padding: 10px 20px;
   border-radius: 8px 8px 0 0;
 }
 
@@ -59,13 +57,14 @@
 }
 
 .form-group label {
-  width: 100px; /* Fixed width for labels */
+  width: 100px;
   font-weight: lighter;
   margin-right: 10px;
-  text-align: right; /* Align text to the right */
+  text-align: right;
 }
 
-.form-group input {
+.form-group input,
+.shortcut-input {
   border: none;
   border-bottom: 2px solid var(--primary-color);
   background: none;
@@ -76,7 +75,8 @@
   transition: border-color 0.2s;
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.shortcut-input:focus {
   border-bottom: 2px solid var(--secondary-color);
 }
 
@@ -101,80 +101,6 @@
   align-items: center;
   gap: 5px;
   transition: background-color 0.2s, color 0.2s;
-}
-
-.modal-buttons button:hover {
-  background-color: var(--secondary-color);
-  color: var(--icon-color);
-}
-
-.modal-buttons .fa-check,
-.modal-buttons .fa-times {
-  pointer-events: none;
-}
-
-.shortcut-input {
-  width: 10px;
-  text-align: center;
-  border: none;
-  border-bottom: 2px solid var(--primary-color);
-  background: none;
-  color: var(--text-color);
-  padding: 5px;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.form-group input {
-  border: none;
-  border-bottom: 2px solid var(--primary-color);
-  background: none;
-  color: var(--text-color);
-  padding: 5px;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.shortcut-input {
-  width: 10px; 
-  text-align: center; 
-  border: none;
-  border-bottom: 2px solid var(--primary-color);
-  background: none;
-  color: var(--text-color);
-  padding: 5px;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.form-group input:focus {
-  border-bottom: 2px solid var(--secondary-color);
-}
-
-.modal-buttons {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-}
-
-.modal-buttons .cancel-button {
-  margin-left: 5px;
-}
-
-.modal-buttons button {
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: background-color 0.2s;
 }
 
 .modal-buttons button:hover {
