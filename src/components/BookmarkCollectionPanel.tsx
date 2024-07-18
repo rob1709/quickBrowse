@@ -16,13 +16,20 @@ interface BookmarkCollectionPanelProps {
 }
 
 export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled, shortcutsEnabled, bookmarkCollectionChanged }: BookmarkCollectionPanelProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [addModalOpen, setAddModalOpen] = useState(false);
   const [selectedBookmark, setSelectedBookmark] = useState<Bookmark | null>(null);
 
   const handleEditClick = (bookmark: Bookmark) => {
     setSelectedBookmark(bookmark);
     shortcutsDisabled();
-    setIsModalOpen(true);
+    setEditModalOpen(true);
+  };
+
+  const handleAddClick = () => {
+    handleEditClick(new Bookmark("","",""));
+    shortcutsDisabled();
+    setAddModalOpen(true);
   };
 
   const handleBookmarkChanged = (originalBookmark: Bookmark, updatedBookmark: Bookmark) => {
@@ -31,8 +38,15 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
     handleCloseModal();
   };
 
+  const handleBookmarkAdded = (originalBookmark: Bookmark, newBookmark: Bookmark) => {
+    const updatedCollection = bookmarkCollection.addBookmark(newBookmark);
+    bookmarkCollectionChanged(updatedCollection);
+    handleCloseModal();
+  };
+
   const handleCloseModal = () => {
-    setIsModalOpen(false);
+    setEditModalOpen(false);
+    setAddModalOpen(false);
     shortcutsEnabled();
   }
 
@@ -41,9 +55,10 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
       {bookmarkCollection.bookmarksOrderedByName.map((bookmark, index) => (
         <BookmarkButton key={index} bookmark={bookmark} onEditClick={handleEditClick} />
       ))}
-      <AddBookmarkButton />
-      <div className={`modal-overlay ${isModalOpen ? 'active' : ''}`} onClick={() => setIsModalOpen(false)}></div>
-      {isModalOpen && (
+      <AddBookmarkButton onClick={handleAddClick} />
+
+      <div className={`modal-overlay ${editModalOpen ? 'active' : ''}`} onClick={() => setEditModalOpen(false)}></div>
+      {editModalOpen && (
         <div className='modal-contents'>
           <AddOrEditBookmarkModal
             bookmark={selectedBookmark!}
@@ -51,6 +66,23 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
             modalClosed={handleCloseModal}
           />
         </div>
+        
+
+        
+      )}
+
+      <div className={`modal-overlay ${addModalOpen ? 'active' : ''}`} onClick={() => setAddModalOpen(false)}></div>
+      {addModalOpen && (
+        <div className='modal-contents'>
+          <AddOrEditBookmarkModal
+            bookmark={new Bookmark("","","")}
+            bookmarkChanged={handleBookmarkAdded}
+            modalClosed={handleCloseModal}
+          />
+        </div>
+        
+
+        
       )}
     </div>
   );

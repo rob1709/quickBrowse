@@ -6,15 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookBookmark, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 interface BookmarkButtonProps {
-  bookmark: Bookmark;
+  onClick: () => void;
 }
 
-export function AddBookmarkButton() {
-  const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-  };
+export function AddBookmarkButton({onClick}: BookmarkButtonProps) {
 
   return (
-    <div className="bookmark-button-add">
+    <div className="bookmark-button-add" onClick={onClick}>
       <a>
       
       <FontAwesomeIcon icon={faPlus} className="bookmark-icon" />

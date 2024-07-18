@@ -23,7 +23,7 @@
   "_execute_browser_action": {
     "suggested_key": {
       "default": "Ctrl+Q",
-      "mac": "Ctrl+Q"
+      "mac": "MacCtrl+Q"
     }
   }
 }
