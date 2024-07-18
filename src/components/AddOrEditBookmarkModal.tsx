@@ -22,6 +22,11 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed 
     bookmarkChanged(updatedBookmark);
   };
 
+  const handleShortcutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value.slice(-1);
+    setShortcutKey(newValue);
+  };
+
   return (
     <div className="add-edit-bookmark-modal">
       <div className="modal-header">
@@ -45,16 +50,16 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed 
             type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
+            style={{ width: '450px' }} 
           />
         </div>
         <div className="form-group">
           <label>Shortcut:</label>
           <input
             type="text"
+            className="shortcut-input"
             value={shortcutKey}
-            maxLength={1}
-            width="2px"
-            onChange={(e) => setShortcutKey(e.target.value)}
+            onChange={handleShortcutChange}
           />
         </div>
         <div className="modal-buttons">

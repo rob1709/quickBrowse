@@ -66,7 +66,6 @@
 }
 
 .form-group input {
-  flex: 1;
   border: none;
   border-bottom: 2px solid var(--primary-color);
   background: none;
@@ -115,8 +114,8 @@
 }
 
 .shortcut-input {
-  width: 30px; /* Adjust the width as needed */
-  text-align: center; /* Center the character in the input */
+  width: 10px;
+  text-align: center;
   border: none;
   border-bottom: 2px solid var(--primary-color);
   background: none;
@@ -125,4 +124,65 @@
   font-size: 16px;
   outline: none;
   transition: border-color 0.2s;
+}
+
+.form-group input {
+  border: none;
+  border-bottom: 2px solid var(--primary-color);
+  background: none;
+  color: var(--text-color);
+  padding: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.shortcut-input {
+  width: 10px; 
+  text-align: center; 
+  border: none;
+  border-bottom: 2px solid var(--primary-color);
+  background: none;
+  color: var(--text-color);
+  padding: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.modal-buttons .cancel-button {
+  margin-left: 5px;
+}
+
+.modal-buttons button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.2s;
+}
+
+.modal-buttons button:hover {
+  background-color: var(--secondary-color);
+  color: var(--icon-color);
+}
+
+.modal-buttons .fa-check,
+.modal-buttons .fa-times {
+  pointer-events: none;
 }
