@@ -26,6 +26,20 @@ export class BookmarkCollection {
         return new BookmarkCollection(updatedBookmarks);
     }
 
+    validateBookmarkAmendment(bookmarkBeingEdited: Bookmark, updatedBookmark: Bookmark): any {
+      var otherBookmarksInCollection = this.deleteBookmark(bookmarkBeingEdited);
+      return otherBookmarksInCollection.validateBookmarkCreation(updatedBookmark);
+    }
+
+    validateBookmarkCreation(newBookmark: Bookmark) {
+        var bookmarkWithSameShortcut = this.bookmarks.find(bookmark => bookmark.shortcutKey === newBookmark.shortcutKey);
+        if (bookmarkWithSameShortcut) {
+            return "Shortcut '" + newBookmark.shortcutKey + "' already in use for " + bookmarkWithSameShortcut.name;
+        } else {
+            return undefined;
+        }
+    }
+
     deleteBookmark(bookmarkToDelete: Bookmark) {
         return new BookmarkCollection(this.bookmarks.filter(bookmark => bookmark !== bookmarkToDelete))
     }

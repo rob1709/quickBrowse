@@ -4,6 +4,93 @@
     "elements": [
       {
         "description": "",
+        "id": "adding-bookmarks;adding-two-bookmarks",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Adding two bookmarks",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 431125
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 164209
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "I add a bookmark called 'Reddit' for 'old.reddit.com'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 54833
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "my bookmark list contains an entry for 'Amazon' with url 'www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 251708
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "my bookmark list contains an entry for 'Reddit' with url 'old.reddit.com'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43291
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "adding-bookmarks",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Adding bookmarks",
+    "tags": [],
+    "uri": "features/AddBookmarks copy.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
         "id": "editing-bookmarks;delete-bookmark",
         "keyword": "Scenario",
         "line": 3,
@@ -19,7 +106,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 499583
+              "duration": 23291
             }
           },
           {
@@ -32,7 +119,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 386125
+              "duration": 66499
             }
           },
           {
@@ -45,7 +132,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 69750
+              "duration": 120374
             }
           },
           {
@@ -58,7 +145,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 47290
+              "duration": 43957
             }
           },
           {
@@ -71,7 +158,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 548624
+              "duration": 95334
             }
           },
           {
@@ -84,7 +171,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 76666
+              "duration": 128957
             }
           }
         ],
@@ -98,5 +185,1339 @@
     "name": "Editing bookmarks",
     "tags": [],
     "uri": "features/DeleteBookmark.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "editing-bookmarks;editing-bookmark-name-/-url",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Editing bookmark name / url",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43541
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I edit this to be 'Reddit' for url 'old.reddit.com' with shortcut 'i'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 63917
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "my bookmark list contains an entry for 'Reddit' with url 'old.reddit.com'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26541
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "my bookmark list does not contain an entry for 'Amazon'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 20040
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "editing-bookmarks",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Editing bookmarks",
+    "tags": [],
+    "uri": "features/EditBookmarks.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "bookmark-favicons;bookmarks-should-include-the-favicon",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Bookmarks should include the favicon",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "I add a bookmark called 'Amazon' for 'https://www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38750
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "I add a bookmark called 'Reddit' for 'https://old.reddit.com'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30166
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I view bookmarks alphabetically by name",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32124
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "the favicon for 'Amazon' is 'https://www.amazon.co.uk/favicon.ico'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "the favicon for 'Reddit' is 'https://old.reddit.com/favicon.ico'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26208
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "bookmark-favicons;bookmarks-should-include-the-favicon-even-if-the-bookmark-url-doesn't-point-at-the-root-of-the-webpage",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Bookmarks should include the favicon even if the bookmark URL doesn't point at the root of the webpage",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14958
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I add a bookmark called 'BBC Football' for 'https://www.bbc.co.uk/sport/football'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I view bookmarks alphabetically by name",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the favicon for 'BBC Football' is 'https://www.bbc.co.uk/favicon.ico'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27708
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "bookmark-favicons;bookmarks-without-https-should-still-work",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "Bookmarks without https should still work",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 18,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14209
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I add a bookmark called 'BBC Football' for 'www.bbc.co.uk/sport/football'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32750
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I view bookmarks alphabetically by name",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "the favicon for 'BBC Football' is 'https://www.bbc.co.uk/favicon.ico'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34291
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "bookmark-favicons;invalid-url---should-return-no-image-(blank-string)",
+        "keyword": "Scenario",
+        "line": 23,
+        "name": "Invalid URL - should return no image (blank string)",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 24,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "I add a bookmark called 'BBC Football' for ''",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 76249
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I view bookmarks alphabetically by name",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 131332
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "the favicon for 'BBC Football' is ''",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29749
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "bookmark-favicons",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Bookmark favicons",
+    "tags": [],
+    "uri": "features/Favicons.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "adding-bookmarks;bookmarks,-alphabetically-by-name",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Bookmarks, alphabetically by name",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13916
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36749
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "I add a bookmark called 'Reddit' for 'old.reddit.com'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29875
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I view bookmarks alphabetically by name",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12707
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "bookmark 1 is for 'Amazon' with url 'www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 64334
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "bookmark 2 is for 'Reddit' with url 'old.reddit.com'",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21833
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "adding-bookmarks",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Adding bookmarks",
+    "tags": [],
+    "uri": "features/GetBookmarks.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-that's-defined",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Pressing a keyboard shortcut that's defined",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55042
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "I add a bookmark called 'Reddit' for 'old.reddit.com' with shortcut 'i'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29958
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "the extension is open and I press 'a'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49542
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "the URL is 'www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30208
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-is-case-insensitive-if-there-are-no-conflicts,-and-case-sensitive-if-so",
+        "keyword": "Scenario Outline",
+        "line": 19,
+        "name": "Pressing a keyboard shortcut is case insensitive if there are no conflicts, and case sensitive if so",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14290
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29708
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I add a bookmark called 'Apple' for 'www.apple.com' with shortcut 'p'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30083
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "the extension is open and I press 'a'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19166
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the URL is 'www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19082
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-is-case-insensitive-if-there-are-no-conflicts,-and-case-sensitive-if-so",
+        "keyword": "Scenario Outline",
+        "line": 20,
+        "name": "Pressing a keyboard shortcut is case insensitive if there are no conflicts, and case sensitive if so",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12625
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 28208
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I add a bookmark called 'Apple' for 'www.apple.com' with shortcut 'p'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29332
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "the extension is open and I press 'A'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the URL is 'www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 17750
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-is-case-insensitive-if-there-are-no-conflicts,-and-case-sensitive-if-so",
+        "keyword": "Scenario Outline",
+        "line": 21,
+        "name": "Pressing a keyboard shortcut is case insensitive if there are no conflicts, and case sensitive if so",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31042
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I add a bookmark called 'Apple' for 'www.apple.com' with shortcut 'A'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 28290
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "the extension is open and I press 'a'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 18458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the URL is 'www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 20040
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-is-case-insensitive-if-there-are-no-conflicts,-and-case-sensitive-if-so",
+        "keyword": "Scenario Outline",
+        "line": 22,
+        "name": "Pressing a keyboard shortcut is case insensitive if there are no conflicts, and case sensitive if so",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12209
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 28499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I add a bookmark called 'Apple' for 'www.apple.com' with shortcut 'A'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35750
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "the extension is open and I press 'A'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the URL is 'www.apple.com'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25792
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "keyboard-shortcuts",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Keyboard Shortcuts",
+    "tags": [],
+    "uri": "features/KeyboardShortcut.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "editing-bookmarks;editing-bookmark-to-have-its-own-existing-shortcut",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Editing bookmark to have its own existing shortcut",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13249
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31833
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "I add a bookmark called 'Reddit' for 'www.reddit.com' with shortcut 'i'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30749
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I validate amending this to be 'Reddit' for url 'old.reddit.com' with shortcut 'i'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 135541
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "this is valid",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26874
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "editing-bookmarks;editing-bookmark-to-have-a-new-unused-shortcut",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Editing bookmark to have a new unused shortcut",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13208
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48040
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I add a bookmark called 'Reddit' for 'www.reddit.com' with shortcut 'i'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I validate amending this to be 'Reddit' for url 'old.reddit.com' with shortcut 'b'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31749
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "this is valid",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12249
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "editing-bookmarks;editing-bookmark-to-have-a-conflicting-shortcut",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "Editing bookmark to have a conflicting shortcut",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 18,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11041
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25792
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "I add a bookmark called 'Reddit' for 'www.reddit.com' with shortcut 'i'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24791
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 21,
+            "name": "I validate amending this to be 'Reddit' for url 'old.reddit.com' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 88416
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
+            "name": "this states \"Shortcut 'a' already in use for Amazon\"",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 92707
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "editing-bookmarks;adding-bookmark-with-new-unused-shortcut",
+        "keyword": "Scenario",
+        "line": 24,
+        "name": "Adding bookmark with new unused shortcut",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 25,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21292
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60667
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "I add a bookmark called 'Reddit' for 'www.reddit.com' with shortcut 'i'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2359874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 28,
+            "name": "I validate amending this to be 'BBC Footballl' for url 'www.bbc.com' with shortcut 'b'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 56166
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "this is valid",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19999
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "editing-bookmarks;adding-bookmark-with-same-letter-in-a-different-case",
+        "keyword": "Scenario",
+        "line": 31,
+        "name": "Adding bookmark with same letter in a different case",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 32,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12041
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 33,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "I add a bookmark called 'Reddit' for 'www.reddit.com' with shortcut 'i'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27541
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 35,
+            "name": "I validate amending this to be 'Apple' for url 'www.apple.com' with shortcut 'A'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "this is valid",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10874
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "editing-bookmarks;adding-bookmark-for-conflicting-shortcut",
+        "keyword": "Scenario",
+        "line": 38,
+        "name": "Adding bookmark for conflicting shortcut",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 39,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9332
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23167
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "I add a bookmark called 'Reddit' for 'www.reddit.com' with shortcut 'i'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I validate amending this to be 'Apple' for url 'www.apple.com' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "this states \"Shortcut 'a' already in use for Amazon\"",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16457
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "editing-bookmarks",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Editing bookmarks",
+    "tags": [],
+    "uri": "features/ValidateBookmark.feature"
   }
 ]

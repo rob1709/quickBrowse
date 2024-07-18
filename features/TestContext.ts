@@ -9,6 +9,7 @@ export class TestContext {
 
     public selectedBookmark: Bookmark | undefined = undefined;
   lastBookmarkAdded: Bookmark | undefined = undefined;
+  validationResult: any;
 
     private constructor() {}
 }

@@ -30,3 +30,11 @@ When('I delete this bookmark', () => {
   }
 })
 
+When('I validate amending this to be {string} for url {string} with shortcut {string}', (name: string, url: string, shortcut: string) => {
+  var bookmarkBeingEdited = TestContext.instance.lastBookmarkAdded;
+  var collection = TestContext.instance.bookmarkCollection;
+  if (bookmarkBeingEdited) {
+    TestContext.instance.validationResult = collection.validateBookmarkAmendment(bookmarkBeingEdited, new Bookmark(name, url, shortcut));
+  }
+})
+

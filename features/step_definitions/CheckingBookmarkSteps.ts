@@ -32,3 +32,11 @@ Then('my bookmark list does not contain an entry for {string}', (shortcutName: s
   const bookmarkWithMatchingName = bookmarks.find(bookmark => bookmark.name === shortcutName);
   assert(bookmarkWithMatchingName === undefined, 'Bookmark found in collection. Collection contained ' + TestContext.instance.bookmarkCollection.print());
 })
+
+Then('this states {string}', (expectedError: string) => {
+  assert.equal(TestContext.instance.validationResult, expectedError, "Expected validation error but got " + TestContext.instance.validationResult);
+})
+
+Then('this is valid', () => {
+  assert.equal(TestContext.instance.validationResult, undefined, "Expected no validation error but got " + TestContext.instance.validationResult);
+})
