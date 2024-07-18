@@ -9,6 +9,14 @@ And the ability to run tests from the test explorer:
 
 <img width="905" alt="image" src="https://github.com/user-attachments/assets/6be34a3f-1819-4577-8074-e530995d9e29">
 
+# Build Guide
+
+From the root folder, run:
+
+`npm run build`
+
+This generates a build folder. Zip the contents of this, and upload to Firefox's dev / extension hub: https://addons.mozilla.org
+
 
 # Getting Started with Create React App
 
