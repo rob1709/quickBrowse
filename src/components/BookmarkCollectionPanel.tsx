@@ -12,9 +12,10 @@ interface BookmarkCollectionPanelProps {
   bookmarkCollection: BookmarkCollection; // Initial collection passed from parent
   shortcutsEnabled: () => void;
   shortcutsDisabled: () => void;
+  bookmarkCollectionChanged: (updatedBookmarks: BookmarkCollection) => void;
 }
 
-export function BookmarkCollectionPanel({ bookmarkCollection: initialBookmarkCollection, shortcutsDisabled, shortcutsEnabled }: BookmarkCollectionPanelProps) {
+export function BookmarkCollectionPanel({ bookmarkCollection: initialBookmarkCollection, shortcutsDisabled, shortcutsEnabled, bookmarkCollectionChanged }: BookmarkCollectionPanelProps) {
   const [bookmarkCollection, setBookmarkCollection] = useState(initialBookmarkCollection);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBookmark, setSelectedBookmark] = useState<Bookmark | null>(null);
@@ -28,6 +29,7 @@ export function BookmarkCollectionPanel({ bookmarkCollection: initialBookmarkCol
   const handleBookmarkChanged = (originalBookmark: Bookmark, updatedBookmark: Bookmark) => {
     const updatedCollection = bookmarkCollection.updateBookmark(originalBookmark, updatedBookmark);
     setBookmarkCollection(updatedCollection);
+    bookmarkCollectionChanged(updatedCollection);
     handleCloseModal();
   };
 

@@ -5,7 +5,7 @@ import { BookmarkCollection } from './model/BookmarkCollection';
 import { Bookmark } from './model/Bookmark';
 import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';
 
-const bookmarkCollection = new BookmarkCollection([
+const initialBookmarks = [
     new Bookmark("Amazon", "https://www.amazon.co.uk", "a"),
     new Bookmark("Reddit", "https://old.reddit.com", "i"),
     new Bookmark("BBC News", "https://www.bbc.co.uk/news", "n"),
@@ -13,15 +13,19 @@ const bookmarkCollection = new BookmarkCollection([
     new Bookmark("Github", "https://github.com", "g"),
     new Bookmark("Youtube", "https://www.youtube.com", "y"),
     new Bookmark("BBC Football", "https://www.bbc.co.uk/sport/football", "B")
-]);
+];
+
+const initialBookmarkCollection = new BookmarkCollection(initialBookmarks);
 
 function App() {
+  const [bookmarkCollection, setBookmarkCollection] = useState(initialBookmarkCollection);
   const [shortcutsActive, setShortcutsActive] = useState(true);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (shortcutsActive && event.key.length === 1) {
         const selectedBookmark = bookmarkCollection.findBookmarkForKeyboardShortcut(event.key);
+        alert(selectedBookmark?.name);
         if (selectedBookmark !== undefined && window.browser) {
           window.browser.tabs.update({ url: selectedBookmark.url }).then(() => {
             window.close();
@@ -35,7 +39,7 @@ function App() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [shortcutsActive]);
+  }, [shortcutsActive, bookmarkCollection]);
 
   const handleShortcutsDisabled = () => {
     setShortcutsActive(false);
@@ -45,12 +49,17 @@ function App() {
     setShortcutsActive(true);
   };
 
+  const handleBookmarkCollectionChanged = (updatedCollection: BookmarkCollection) => {
+    setBookmarkCollection(updatedCollection);
+  };
+
   return (
     <div className="App">
       <BookmarkCollectionPanel
         bookmarkCollection={bookmarkCollection}
         shortcutsDisabled={handleShortcutsDisabled}
         shortcutsEnabled={handleShortcutsEnabled}
+        bookmarkCollectionChanged={handleBookmarkCollectionChanged}
       />
     </div>
   );
