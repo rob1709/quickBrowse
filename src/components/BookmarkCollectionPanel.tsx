@@ -81,6 +81,8 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
             bookmark={selectedBookmark!}
             bookmarkChanged={handleBookmarkChanged}
             modalClosed={handleCloseModal}
+            addMode={false}
+            collection={bookmarkCollection}
           />
         </div>
       )}
@@ -92,6 +94,8 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
             bookmark={new Bookmark("","","")}
             bookmarkChanged={handleBookmarkAdded}
             modalClosed={handleCloseModal}
+            addMode={true}
+            collection={bookmarkCollection}
           />
         </div>
       )}

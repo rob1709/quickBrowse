@@ -118,6 +118,13 @@
   pointer-events: none;
 }
 
+.errorText {
+  font-weight: light;
+  text-align: left;
+  margin-left: 40px;
+  color: var(--error-text-color);
+}
+
 
 .modal-overlay {
   position: fixed;
