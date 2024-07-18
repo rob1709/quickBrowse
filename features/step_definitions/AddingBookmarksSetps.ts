@@ -24,3 +24,9 @@ When('I edit this to be {string} for url {string} with shortcut {string}', (name
   }
 })
 
+When('I delete this bookmark', () => {
+  if (TestContext.instance.lastBookmarkAdded) {
+    TestContext.instance.bookmarkCollection = TestContext.instance.bookmarkCollection.deleteBookmark(TestContext.instance.lastBookmarkAdded);
+  }
+})
+

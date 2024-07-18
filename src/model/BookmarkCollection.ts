@@ -24,7 +24,11 @@ export class BookmarkCollection {
           bookmark === oldBookmark ? updatedBookmark : bookmark
         );
         return new BookmarkCollection(updatedBookmarks);
-      }
+    }
+
+    deleteBookmark(bookmarkToDelete: Bookmark) {
+        return new BookmarkCollection(this.bookmarks.filter(bookmark => bookmark !== bookmarkToDelete))
+    }
 
     public print() {
         return this.bookmarks.length === 0 ? "no bookmarks" : "[" + this.bookmarksOrderedByName.map(bookmark => bookmark.name).join(",") + "]";

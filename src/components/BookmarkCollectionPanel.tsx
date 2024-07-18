@@ -32,14 +32,20 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
     setAddModalOpen(true);
   };
 
-  const handleBookmarkChanged = (originalBookmark: Bookmark, updatedBookmark: Bookmark) => {
-    const updatedCollection = bookmarkCollection.updateBookmark(originalBookmark, updatedBookmark);
+  const handleBookmarkAdded = (originalBookmark: Bookmark, newBookmark: Bookmark) => {
+    const updatedCollection = bookmarkCollection.addBookmark(newBookmark);
     bookmarkCollectionChanged(updatedCollection);
     handleCloseModal();
   };
 
-  const handleBookmarkAdded = (originalBookmark: Bookmark, newBookmark: Bookmark) => {
-    const updatedCollection = bookmarkCollection.addBookmark(newBookmark);
+  const handleBookmarkChanged = (originalBookmark: Bookmark, updatedBookmark: Bookmark) => {
+    const updatedCollection = bookmarkCollection.updateBookmark(originalBookmark, updatedBookmark);
+    bookmarkCollectionChanged(updatedCollection);
+    handleCloseModal();
+  };  
+
+  const handleBookmarkDeleted = (deletedBookmark: Bookmark) => {
+    const updatedCollection = bookmarkCollection.deleteBookmark(deletedBookmark);
     bookmarkCollectionChanged(updatedCollection);
     handleCloseModal();
   };
@@ -53,7 +59,7 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
   return (
     <div className="bookmark-panel add-bookmark">
       {bookmarkCollection.bookmarksOrderedByName.map((bookmark, index) => (
-        <BookmarkButton key={index} bookmark={bookmark} onEditClick={handleEditClick} />
+        <BookmarkButton key={index} bookmark={bookmark} onEditClick={handleEditClick} onDeleteClick={handleBookmarkDeleted} />
       ))}
       <AddBookmarkButton onClick={handleAddClick} />
 
@@ -65,10 +71,7 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
             bookmarkChanged={handleBookmarkChanged}
             modalClosed={handleCloseModal}
           />
-        </div>
-        
-
-        
+        </div>        
       )}
 
       <div className={`modal-overlay ${addModalOpen ? 'active' : ''}`} onClick={() => setAddModalOpen(false)}></div>
