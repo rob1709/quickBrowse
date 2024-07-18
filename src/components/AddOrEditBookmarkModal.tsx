@@ -52,6 +52,8 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed 
           <input
             type="text"
             value={shortcutKey}
+            maxLength={1}
+            width="2px"
             onChange={(e) => setShortcutKey(e.target.value)}
           />
         </div>
