@@ -25,7 +25,9 @@ function App() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (shortcutsActive && event.key.length === 1) {
         const selectedBookmark = bookmarkCollection.findBookmarkForKeyboardShortcut(event.key);
-        alert(selectedBookmark?.name);
+        // Commented out for testing using npm start. This allows testing of the
+        // logic even though the below won't work as we're no in extension context
+        //alert(selectedBookmark?.name); 
         if (selectedBookmark !== undefined && window.browser) {
           window.browser.tabs.update({ url: selectedBookmark.url }).then(() => {
             window.close();
