@@ -58,14 +58,14 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
-.edit-icon {
+.button-icon {
   margin-left: 10px;
-  color: var(--text-color);
+  color: var(--button-icon-color);
   cursor: pointer;
   transition: color 0.2s; /* Added transition for color */
 }
 
-.edit-icon:hover {
+.button-icon:hover {
   color: var(--icon-color); /* Change color on hover */
 }
 

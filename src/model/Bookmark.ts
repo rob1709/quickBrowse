@@ -12,8 +12,16 @@ export class Bookmark {
         this.name = name;
         this.url = url;
         this.shortcutKey = shortcutKey;
-        var urlAsUrl = new URL(this.normalizeUrl(this.url));
-        this.favicon = `${urlAsUrl.origin}/favicon.ico`;
+        this.favicon = this.buildFaviconUrl(this.url);
+    }
+
+    private buildFaviconUrl(url: string) {
+        try  {
+            var urlAsUrl = new URL(this.normalizeUrl(this.url));
+            return `${urlAsUrl.origin}/favicon.ico`;
+        } catch (exception) {
+            return "";
+        }
     }
 
     private normalizeUrl(url: string): string {

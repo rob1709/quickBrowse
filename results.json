@@ -4,74 +4,61 @@
     "elements": [
       {
         "description": "",
-        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-that's-defined",
+        "id": "bookmark-favicons;invalid-url---should-return-no-image-(blank-string)",
         "keyword": "Scenario",
-        "line": 3,
-        "name": "Pressing a keyboard shortcut that's defined",
+        "line": 23,
+        "name": "Invalid URL - should return no image (blank string)",
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
+            "line": 24,
             "name": "I have an empty list of bookmarks",
             "match": {
               "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
             },
             "result": {
               "status": "passed",
-              "duration": 432416
+              "duration": 431999
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 5,
-            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "line": 25,
+            "name": "I add a bookmark called 'BBC Football' for ''",
             "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
             },
             "result": {
               "status": "passed",
-              "duration": 228832
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 6,
-            "name": "I add a bookmark called 'Reddit' for 'old.reddit.com' with shortcut 'i'",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 74707
+              "duration": 239207
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 7,
-            "name": "the extension is open and I press 'a'",
+            "line": 26,
+            "name": "I view bookmarks alphabetically by name",
             "match": {
-              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:7"
             },
             "result": {
               "status": "passed",
-              "duration": 138749
+              "duration": 79416
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 8,
-            "name": "the URL is 'www.amazon.co.uk'",
+            "line": 27,
+            "name": "the favicon for 'BBC Football' is ''",
             "match": {
-              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:23"
             },
             "result": {
               "status": "passed",
-              "duration": 80624
+              "duration": 3585582
             }
           }
         ],
@@ -79,11 +66,85 @@
         "type": "scenario"
       }
     ],
-    "id": "keyboard-shortcuts",
+    "id": "bookmark-favicons",
     "line": 1,
     "keyword": "Feature",
-    "name": "Keyboard Shortcuts",
+    "name": "Bookmark favicons",
     "tags": [],
-    "uri": "features/KeyboardShortcut.feature"
+    "uri": "features/Favicons.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "bookmark-favicons;invalid-url---should-return-no-image-(blank-string)",
+        "keyword": "Scenario",
+        "line": 23,
+        "name": "Invalid URL - should return no image (blank string)",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 24,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46082
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "I add a bookmark called 'BBC Football' for ''",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 83791
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I view bookmarks alphabetically by name",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 39665
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "the favicon for 'BBC Football' is ''",
+            "match": {
+              "location": "features/step_definitions/CheckingBookmarkSteps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36459
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "bookmark-favicons",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Bookmark favicons",
+    "tags": [],
+    "uri": "features/favicons.feature"
   }
 ]

@@ -1,3 +1,4 @@
+import { Bookmark } from '../model/Bookmark';
 import { BookmarkCollection } from '../model/BookmarkCollection';
 import '../styles/App.css';
 import '../styles/colourThemes.css';
@@ -10,9 +11,11 @@ interface BookmarkCollectionPanelProps {
 export function BookmarkCollectionPanel({ bookmarkCollection }: BookmarkCollectionPanelProps) {
   return (
     <div className="bookmark-panel">
+      
     {bookmarkCollection.bookmarksOrderedByName.map((bookmark, index) => (
       <BookmarkButton key={index} bookmark={bookmark} />
     ))}
+    
   </div>
   );
 }

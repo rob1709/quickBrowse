@@ -29,8 +29,8 @@ export function BookmarkButton({ bookmark }: BookmarkButtonProps) {
         <img src={bookmark.favicon} alt={`${bookmark.name.charAt(0)}`} className="bookmark-icon" />
         {bookmark.name}
       </a>
-      <FontAwesomeIcon icon={faPen} className="edit-icon" />
-      <FontAwesomeIcon icon={faCircleXmark} className="edit-icon" />
+      <FontAwesomeIcon icon={faPen} className="button-icon" />
+      <FontAwesomeIcon icon={faCircleXmark} className="button-icon" />
     </div>
   );
 }

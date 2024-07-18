@@ -19,3 +19,9 @@ Scenario: Bookmarks without https should still work
   And I add a bookmark called 'BBC Football' for 'www.bbc.co.uk/sport/football'
   When I view bookmarks alphabetically by name
   Then the favicon for 'BBC Football' is 'https://www.bbc.co.uk/favicon.ico'  
+
+Scenario: Invalid URL - should return no image (blank string)
+  Given I have an empty list of bookmarks
+  And I add a bookmark called 'BBC Football' for ''
+  When I view bookmarks alphabetically by name
+  Then the favicon for 'BBC Football' is '' 
