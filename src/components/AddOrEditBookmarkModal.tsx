@@ -60,7 +60,7 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed 
             className="shortcut-input"
             value={shortcutKey}
             onChange={handleShortcutChange}
-            style={{ width: '10px' }} 
+            style={{ width: '20px' }} 
           />
         </div>
         <div className="modal-buttons">
