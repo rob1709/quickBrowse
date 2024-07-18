@@ -5,30 +5,33 @@ import { BookmarkCollection } from './model/BookmarkCollection';
 import { Bookmark } from './model/Bookmark';
 import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';
 
-const initialBookmarks = [
-    new Bookmark("Amazon", "https://www.amazon.co.uk", "a"),
-    new Bookmark("Reddit", "https://old.reddit.com", "i"),
-    new Bookmark("BBC News", "https://www.bbc.co.uk/news", "n"),
-    new Bookmark("Rightmove", "https://www.rightmove.co.uk/", "m"),
-    new Bookmark("Github", "https://github.com", "g"),
-    new Bookmark("Youtube", "https://www.youtube.com", "y"),
-    new Bookmark("FontAwesome", "https://fontawesome.com/icons/", "f"),
-    new Bookmark("BBC Football", "https://www.bbc.co.uk/sport/football", "B")
-];
-
-const initialBookmarkCollection = new BookmarkCollection(initialBookmarks);
+const STORAGE_KEY = 'bookmarks';
 
 function App() {
-  const [bookmarkCollection, setBookmarkCollection] = useState(initialBookmarkCollection);
+  const [bookmarkCollection, setBookmarkCollection] = useState(new BookmarkCollection([]));
   const [shortcutsActive, setShortcutsActive] = useState(true);
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
+    // Load bookmarks from storage on startup
+    const loadBookmarks = async () => {
+      const result = await browser.storage.local.get(STORAGE_KEY);
+      if (result[STORAGE_KEY]) {
+        const savedBookmarks = result[STORAGE_KEY].map(
+          (bookmark: Bookmark) => new Bookmark(bookmark.name, bookmark.url, bookmark.shortcutKey)
+        );
+        setBookmarkCollection(new BookmarkCollection(savedBookmarks));
+      }
+    };
+
+    loadBookmarks();
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event : KeyboardEvent) => {
       if (shortcutsActive && event.key.length === 1) {
         const selectedBookmark = bookmarkCollection.findBookmarkForKeyboardShortcut(event.key);
-        // Commented out for testing using npm start. This allows testing of the
-        // logic even though the below won't work as we're no in extension context
-        //alert(selectedBookmark?.name); 
+        // Uncomment the line below for testing purposes if necessary
+        // alert(selectedBookmark?.name);
         if (selectedBookmark !== undefined && window.browser) {
           window.browser.tabs.update({ url: selectedBookmark.url }).then(() => {
             window.close();
@@ -54,6 +57,14 @@ function App() {
 
   const handleBookmarkCollectionChanged = (updatedCollection: BookmarkCollection) => {
     setBookmarkCollection(updatedCollection);
+    // Save bookmarks to storage whenever they are updated
+    browser.storage.local.set({
+      [STORAGE_KEY]: updatedCollection.bookmarksOrderedByName.map((bookmark: Bookmark) => ({
+        name: bookmark.name,
+        url: bookmark.url,
+        shortcutKey: bookmark.shortcutKey,
+      })),
+    });
   };
 
   return (
