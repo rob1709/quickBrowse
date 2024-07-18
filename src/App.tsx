@@ -12,6 +12,7 @@ const initialBookmarks = [
     new Bookmark("Rightmove", "https://www.rightmove.co.uk/", "m"),
     new Bookmark("Github", "https://github.com", "g"),
     new Bookmark("Youtube", "https://www.youtube.com", "y"),
+    new Bookmark("FontAwesome", "https://fontawesome.com/icons/", "f"),
     new Bookmark("BBC Football", "https://www.bbc.co.uk/sport/football", "B")
 ];
 

@@ -18,7 +18,9 @@ interface BookmarkCollectionPanelProps {
 export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled, shortcutsEnabled, bookmarkCollectionChanged }: BookmarkCollectionPanelProps) {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [addModalOpen, setAddModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedBookmark, setSelectedBookmark] = useState<Bookmark | null>(null);
+  const [bookmarkToDelete, setBookmarkToDelete] = useState<Bookmark | null>(null);
 
   const handleEditClick = (bookmark: Bookmark) => {
     setSelectedBookmark(bookmark);
@@ -32,6 +34,20 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
     setAddModalOpen(true);
   };
 
+  const handleDeleteClick = (bookmark: Bookmark) => {
+    setBookmarkToDelete(bookmark);
+    shortcutsDisabled();
+    setDeleteModalOpen(true);
+  };
+
+  const confirmDeleteBookmark = () => {
+    if (bookmarkToDelete) {
+      const updatedCollection = bookmarkCollection.deleteBookmark(bookmarkToDelete);
+      bookmarkCollectionChanged(updatedCollection);
+      handleCloseModal();
+    }
+  };
+
   const handleBookmarkAdded = (originalBookmark: Bookmark, newBookmark: Bookmark) => {
     const updatedCollection = bookmarkCollection.addBookmark(newBookmark);
     bookmarkCollectionChanged(updatedCollection);
@@ -42,24 +58,19 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
     const updatedCollection = bookmarkCollection.updateBookmark(originalBookmark, updatedBookmark);
     bookmarkCollectionChanged(updatedCollection);
     handleCloseModal();
-  };  
-
-  const handleBookmarkDeleted = (deletedBookmark: Bookmark) => {
-    const updatedCollection = bookmarkCollection.deleteBookmark(deletedBookmark);
-    bookmarkCollectionChanged(updatedCollection);
-    handleCloseModal();
   };
 
   const handleCloseModal = () => {
     setEditModalOpen(false);
     setAddModalOpen(false);
+    setDeleteModalOpen(false);
     shortcutsEnabled();
-  }
+  };
 
   return (
     <div className="bookmark-panel add-bookmark">
       {bookmarkCollection.bookmarksOrderedByName.map((bookmark, index) => (
-        <BookmarkButton key={index} bookmark={bookmark} onEditClick={handleEditClick} onDeleteClick={handleBookmarkDeleted} />
+        <BookmarkButton key={index} bookmark={bookmark} onEditClick={handleEditClick} onDeleteClick={handleDeleteClick} />
       ))}
       <AddBookmarkButton onClick={handleAddClick} />
 
@@ -71,7 +82,7 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
             bookmarkChanged={handleBookmarkChanged}
             modalClosed={handleCloseModal}
           />
-        </div>        
+        </div>
       )}
 
       <div className={`modal-overlay ${addModalOpen ? 'active' : ''}`} onClick={() => setAddModalOpen(false)}></div>
@@ -83,9 +94,24 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
             modalClosed={handleCloseModal}
           />
         </div>
-        
+      )}
 
-        
+      <div className={`modal-overlay ${deleteModalOpen ? 'active' : ''}`} onClick={() => setDeleteModalOpen(false)}></div>
+      {deleteModalOpen && (
+        <div className='modal-contents'>
+          <div className="add-edit-bookmark-modal">
+            <div className="modal-header">
+              <h2>Delete {bookmarkToDelete?.name}?</h2>
+            </div>
+            <div className="modal-content">
+            <p className='modalText'>Are you sure you want to delete bookmark for {bookmarkToDelete?.name}?</p>
+            <div className="modal-buttons">
+              <button onClick={confirmDeleteBookmark}>Yes</button>
+              <button onClick={handleCloseModal} className="cancel-button">No</button>
+            </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
