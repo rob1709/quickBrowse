@@ -1,7 +1,6 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { strict as assert } from 'assert';
 import { TestContext } from '../TestContext';
-import { BookmarkCollection } from '../../src/model/BookmarkCollection';
 
 
 When('I view bookmarks alphabetically by name', () => {
@@ -26,4 +25,10 @@ Then('the favicon for {string} is {string}', (shortcutName: string, expectedFavi
     assert(bookmarkWithMatchingName !== undefined, 'Bookmark not found in collection. Collection contained ' + TestContext.instance.bookmarkCollection.print());
     assert.equal(bookmarkWithMatchingName.favicon, expectedFavicon, `Expected Favicon to be "${expectedFavicon}", but found "${bookmarkWithMatchingName.favicon}"`);
 
+})
+
+Then('my bookmark list does not contain an entry for {string}', (shortcutName: string) => {
+  const bookmarks = TestContext.instance.bookmarkCollection.bookmarksOrderedByName;
+  const bookmarkWithMatchingName = bookmarks.find(bookmark => bookmark.name === shortcutName);
+  assert(bookmarkWithMatchingName === undefined, 'Bookmark found in collection. Collection contained ' + TestContext.instance.bookmarkCollection.print());
 })

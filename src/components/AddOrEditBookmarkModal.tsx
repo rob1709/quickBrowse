@@ -8,7 +8,7 @@ import { faCheck, faTimes, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 interface AddOrEditBookmarkModalProps {
   bookmark: Bookmark;
-  bookmarkChanged: (bookmark: Bookmark) => void;
+  bookmarkChanged: (original: Bookmark, edited: Bookmark) => void;
   modalClosed: () => void;
 }
 
@@ -19,7 +19,7 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed 
 
   const handleConfirm = () => {
     const updatedBookmark = new Bookmark(name, url, shortcutKey);
-    bookmarkChanged(updatedBookmark);
+    bookmarkChanged(bookmark, updatedBookmark);
   };
 
   const handleShortcutChange = (e: React.ChangeEvent<HTMLInputElement>) => {

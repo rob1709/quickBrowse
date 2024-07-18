@@ -12,6 +12,15 @@ When('I add a bookmark called {string} for {string}', (name: string, url: string
 })
 
 Given('I add a bookmark called {string} for {string} with shortcut {string}', (name: string, url: string, shortcut: string) => {
-  TestContext.instance.bookmarkCollection = TestContext.instance.bookmarkCollection.addBookmark(new Bookmark(name, url, shortcut));
+  var bookmarkToAdd = new Bookmark(name, url, shortcut);
+  TestContext.instance.bookmarkCollection = TestContext.instance.bookmarkCollection.addBookmark(bookmarkToAdd);
+  TestContext.instance.lastBookmarkAdded = bookmarkToAdd;
+})
+
+When('I edit this to be {string} for url {string} with shortcut {string}', (name: string, url: string, shortcut: string) => {
+  var udpatedBookmark = new Bookmark(name, url, shortcut);
+  if (TestContext.instance.lastBookmarkAdded) {
+    TestContext.instance.bookmarkCollection = TestContext.instance.bookmarkCollection.updateBookmark(TestContext.instance.lastBookmarkAdded, udpatedBookmark);
+  }
 })
 

@@ -8,6 +8,7 @@ export class TestContext {
     public bookmarkCollection: BookmarkCollection = BookmarkCollection.empty;
 
     public selectedBookmark: Bookmark | undefined = undefined;
+  lastBookmarkAdded: Bookmark | undefined = undefined;
 
     private constructor() {}
 }

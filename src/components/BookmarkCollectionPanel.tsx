@@ -9,12 +9,13 @@ import { AddOrEditBookmarkModal } from './AddOrEditBookmarkModal';
 import { Bookmark } from '../model/Bookmark';
 
 interface BookmarkCollectionPanelProps {
-  bookmarkCollection: BookmarkCollection;
+  bookmarkCollection: BookmarkCollection; // Initial collection passed from parent
   shortcutsEnabled: () => void;
   shortcutsDisabled: () => void;
 }
 
-export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled, shortcutsEnabled }: BookmarkCollectionPanelProps) {
+export function BookmarkCollectionPanel({ bookmarkCollection: initialBookmarkCollection, shortcutsDisabled, shortcutsEnabled }: BookmarkCollectionPanelProps) {
+  const [bookmarkCollection, setBookmarkCollection] = useState(initialBookmarkCollection);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBookmark, setSelectedBookmark] = useState<Bookmark | null>(null);
 
@@ -24,10 +25,10 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
     setIsModalOpen(true);
   };
 
-  const handleBookmarkChanged = (updatedBookmark: Bookmark) => {
-    //bookmarkCollection.updateBookmark(updatedBookmark);
+  const handleBookmarkChanged = (originalBookmark: Bookmark, updatedBookmark: Bookmark) => {
+    const updatedCollection = bookmarkCollection.updateBookmark(originalBookmark, updatedBookmark);
+    setBookmarkCollection(updatedCollection);
     handleCloseModal();
-    
   };
 
   const handleCloseModal = () => {
@@ -44,13 +45,13 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
       <div className={`modal-overlay ${isModalOpen ? 'active' : ''}`} onClick={() => setIsModalOpen(false)}></div>
       {isModalOpen && (
         <div className='modal-contents'>
-        <AddOrEditBookmarkModal
-          bookmark={selectedBookmark!}
-          bookmarkChanged={handleBookmarkChanged}
-          modalClosed={() => handleCloseModal()}
-        />
+          <AddOrEditBookmarkModal
+            bookmark={selectedBookmark!}
+            bookmarkChanged={handleBookmarkChanged}
+            modalClosed={() => handleCloseModal()}
+          />
         </div>
       )}
     </div>
   );
-} 
+}
