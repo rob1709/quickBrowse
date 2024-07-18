@@ -26,6 +26,26 @@
   position: relative;
 }
 
+.bookmark-button-add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: var(--primary-color-add);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  position: relative;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.bookmark-button-add:hover  {
+  
+  color: var(--icon-color); 
+}
+
 .bookmark-text {
   display: flex;
   align-items: center;
@@ -82,4 +102,59 @@ h1 {
 .headerBar {
   background-color: var(--header-background);
   
+}
+
+
+
+
+
+
+
+
+
+/* src/styles/App.css */
+.add-edit-bookmark-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.2s;
+}
+
+.modal-buttons button:hover {
+  background-color: var(--secondary-color);
+}
+
+.modal-buttons .fa-check,
+.modal-buttons .fa-times {
+  pointer-events: none;
 }
