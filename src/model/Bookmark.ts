@@ -10,7 +10,7 @@ export class Bookmark {
 
     constructor(name: string, url: string, shortcutKey: string) {
         this.name = name;
-        this.url = url;
+        this.url = this.normalizeUrl(url);
         this.shortcutKey = shortcutKey;
         this.favicon = this.buildFaviconUrl(this.url);
     }

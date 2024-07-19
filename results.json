@@ -4,10 +4,10 @@
     "elements": [
       {
         "description": "",
-        "id": "editing-bookmarks;editing-bookmark-name-/-url",
+        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-that's-defined",
         "keyword": "Scenario",
         "line": 3,
-        "name": "Editing bookmark name / url",
+        "name": "Pressing a keyboard shortcut that's defined",
         "steps": [
           {
             "arguments": [],
@@ -19,7 +19,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 548874
+              "duration": 396457
             }
           },
           {
@@ -32,46 +32,350 @@
             },
             "result": {
               "status": "passed",
-              "duration": 206833
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 6,
-            "name": "I edit this to be 'Reddit' for url 'old.reddit.com' with shortcut 'i'",
-            "match": {
-              "location": "features/step_definitions/AddingBookmarksSetps.ts:20"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 86542
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 7,
-            "name": "my bookmark list contains an entry for 'Reddit' with url 'old.reddit.com'",
-            "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:10"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 133708
+              "duration": 296624
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 8,
-            "name": "my bookmark list does not contain an entry for 'Amazon'",
+            "line": 6,
+            "name": "I add a bookmark called 'Reddit' for 'old.reddit.com' with shortcut 'i'",
             "match": {
-              "location": "features/step_definitions/CheckingBookmarkSteps.ts:30"
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
             },
             "result": {
               "status": "passed",
-              "duration": 70624
+              "duration": 95499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "the extension is open and I press 'a'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 128292
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "the URL is 'https://www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 82916
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-is-case-insensitive-if-there-are-no-conflicts,-and-case-sensitive-if-so",
+        "keyword": "Scenario Outline",
+        "line": 19,
+        "name": "Pressing a keyboard shortcut is case insensitive if there are no conflicts, and case sensitive if so",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29792
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 134166
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I add a bookmark called 'Apple' for 'www.apple.com' with shortcut 'p'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 159457
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "the extension is open and I press 'a'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46833
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the URL is 'https://www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 129583
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-is-case-insensitive-if-there-are-no-conflicts,-and-case-sensitive-if-so",
+        "keyword": "Scenario Outline",
+        "line": 20,
+        "name": "Pressing a keyboard shortcut is case insensitive if there are no conflicts, and case sensitive if so",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 130708
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 62666
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I add a bookmark called 'Apple' for 'www.apple.com' with shortcut 'p'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 59916
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "the extension is open and I press 'A'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48207
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the URL is 'https://www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24999
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-is-case-insensitive-if-there-are-no-conflicts,-and-case-sensitive-if-so",
+        "keyword": "Scenario Outline",
+        "line": 21,
+        "name": "Pressing a keyboard shortcut is case insensitive if there are no conflicts, and case sensitive if so",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23625
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44208
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I add a bookmark called 'Apple' for 'www.apple.com' with shortcut 'A'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "the extension is open and I press 'a'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24208
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the URL is 'https://www.amazon.co.uk'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24374
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "keyboard-shortcuts;pressing-a-keyboard-shortcut-is-case-insensitive-if-there-are-no-conflicts,-and-case-sensitive-if-so",
+        "keyword": "Scenario Outline",
+        "line": 22,
+        "name": "Pressing a keyboard shortcut is case insensitive if there are no conflicts, and case sensitive if so",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I have an empty list of bookmarks",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 37125
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk' with shortcut 'a'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 57541
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I add a bookmark called 'Apple' for 'www.apple.com' with shortcut 'A'",
+            "match": {
+              "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45916
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "the extension is open and I press 'A'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the URL is 'https://www.apple.com'",
+            "match": {
+              "location": "features/step_definitions/KeyboardShortcuts.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36582
             }
           }
         ],
@@ -79,11 +383,11 @@
         "type": "scenario"
       }
     ],
-    "id": "editing-bookmarks",
+    "id": "keyboard-shortcuts",
     "line": 1,
     "keyword": "Feature",
-    "name": "Editing bookmarks",
+    "name": "Keyboard Shortcuts",
     "tags": [],
-    "uri": "features/EditBookmarks.feature"
+    "uri": "features/KeyboardShortcut.feature"
   }
 ]
