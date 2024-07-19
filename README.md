@@ -15,7 +15,9 @@ From the root folder, run:
 
 `npm run build`
 
-This generates a build folder. Zip the contents of this, and upload to Firefox's dev / extension hub: https://addons.mozilla.org
+This generates a build folder. Zip the contents of this (note the contents, not the folder itself; Firefox requires manifest.json to sit in the root once unzipped). 
+
+Upload to Firefox's dev / extension hub: https://addons.mozilla.org. You'll also need to upload the raw source code too. Do this by zipping the contents, excluding build and npm modules (firefox limit the size of the zipped source folder).
 
 
 # Getting Started with Create React App
