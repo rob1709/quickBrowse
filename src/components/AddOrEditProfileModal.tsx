@@ -48,7 +48,9 @@ export function AddOrEditCollectionModal({ profile, collectionChanged: profileCh
             value={icon}
             onChange={(e) => setIcon(e.target.value)}
           />
-          <a href='https://fontawesome.com/search?o=r&m=free'>
+          <a href="https://fontawesome.com/search?o=r&m=free"
+             style={{ marginLeft: '40px' }} 
+             >
             Find Icons
           </a>
         </div>

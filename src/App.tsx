@@ -7,6 +7,7 @@ import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';
 import { BrowserManagedBookmarkLoader } from './storage/StorageManager';
 import { QuickBrowseProfile as QuickBrowseProfle } from './model/QuickBrowseProfile';
 import { ProfileSelector } from './components/ProfileSelector';
+import { LocalBookmarkLoader } from './storage/LocalStorageManager';
 
 function App() {
 
@@ -14,8 +15,8 @@ function App() {
   const [shortcutsActive, setShortcutsActive] = useState(true);
 
   //const bookmarkLoader : BookmarkLoader = new BrowserManagedBookmarkLoader();
-  //const storageManager = useMemo(() => new LocalBookmarkLoader(), []);
-  const storageManager = useMemo(() => new BrowserManagedBookmarkLoader(), []);
+  const storageManager = useMemo(() => new LocalBookmarkLoader(), []);
+  //const storageManager = useMemo(() => new BrowserManagedBookmarkLoader(), []);
 
   useEffect(() => {
     // Load bookmarks from storage on startup
