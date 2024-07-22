@@ -30,6 +30,7 @@ export function BookmarkButton({ bookmark, onEditClick, onDeleteClick }: Bookmar
       >
         <img src={bookmark.favicon} alt={`${bookmark.name.charAt(0)}`} className="bookmark-icon" />
         {bookmark.name}
+        <span className='bookmarkShortcutText'>({bookmark.shortcutKey})</span>
       </a>
       <FontAwesomeIcon icon={faPen} className="button-icon" onClick={() => onEditClick(bookmark)}  />
       <FontAwesomeIcon icon={faCircleXmark} className="button-icon" onClick={() => onDeleteClick(bookmark)} />
