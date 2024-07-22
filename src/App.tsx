@@ -3,7 +3,7 @@ import './styles/App.css';
 import './styles/colourThemes.css';
 import { BookmarkCollection } from './model/BookmarkCollection';
 import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';
-import { LocalBookmarkLoader } from './storage/StorageManager';
+import { BrowserManagedBookmarkLoader } from './storage/StorageManager';
 import { QuickBrowseProfile } from './model/QuickBrowseProfile';
 import { QuickBrowseUserConfig } from './model/QuickBrowseUserConfig';
 import { ProfileSelector } from './components/ProfileSelector';
@@ -17,7 +17,8 @@ function App() {
   const [shortcutsActive, setShortcutsActive] = useState(true);
 
   //const bookmarkLoader : BookmarkLoader = new BrowserManagedBookmarkLoader();
-  const storageManager = useMemo(() => new LocalBookmarkLoader(), []);
+  //const storageManager = useMemo(() => new LocalBookmarkLoader(), []);
+  const storageManager = useMemo(() => new BrowserManagedBookmarkLoader(), []);
 
   useEffect(() => {
     // Load bookmarks from storage on startup
