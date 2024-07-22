@@ -52,7 +52,7 @@ export class BrowserManagedBookmarkLoader implements StorageManager {
         // Implement the logic to convert BookmarkCollection to QuickBrowseUserConfig
         // For simplicity, assuming one profile
         const profile = new QuickBrowseProfile("Default", bookmarkCollection, "fa-default-icon");
-        return new QuickBrowseUserConfig([profile]);
+        return new QuickBrowseUserConfig([profile], profile);
     }
 }
 
@@ -100,7 +100,9 @@ export class LocalBookmarkLoader implements StorageManager {
                     homeProfile,
                     workProfile,
                     musicProfile
-                ]);
+                ],
+                workProfile
+                );
     
                 resolve(config);
             } catch (error) {
