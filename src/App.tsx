@@ -1,35 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './styles/App.css';
 import './styles/colourThemes.css';
 import { BookmarkCollection } from './model/BookmarkCollection';
-import { Bookmark } from './model/Bookmark';
 import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';
-
-const STORAGE_KEY = 'bookmarks';
+import { LocalBookmarkLoader } from './storage/StorageManager';
+import { QuickBrowseProfile } from './model/QuickBrowseProfile';
+import { QuickBrowseUserConfig } from './model/QuickBrowseUserConfig';
+import { ProfileSelector } from './components/ProfileSelector';
 
 function App() {
-  const [bookmarkCollection, setBookmarkCollection] = useState(new BookmarkCollection([]));
+  
+  const [availableProfiles, setAvailableProfiles] = useState<QuickBrowseProfile[]>([]);
+  const [currentProfile, setCurrentProfile] = useState(new QuickBrowseProfile("", new BookmarkCollection([]), ""));
+
+  //const [bookmarkCollection, setBookmarkCollection] = useState(new BookmarkCollection([]));
   const [shortcutsActive, setShortcutsActive] = useState(true);
+
+  //const bookmarkLoader : BookmarkLoader = new BrowserManagedBookmarkLoader();
+  const storageManager = useMemo(() => new LocalBookmarkLoader(), []);
 
   useEffect(() => {
     // Load bookmarks from storage on startup
     const loadBookmarks = async () => {
-      const result = await browser.storage.local.get(STORAGE_KEY);
-      if (result[STORAGE_KEY]) {
-        const savedBookmarks = result[STORAGE_KEY].map(
-          (bookmark: Bookmark) => new Bookmark(bookmark.name, bookmark.url, bookmark.shortcutKey)
-        );
-        setBookmarkCollection(new BookmarkCollection(savedBookmarks));
-      }
+      const quickBrowseConfig = await storageManager.loadQuickBrowseConfig()
+      setAvailableProfiles(quickBrowseConfig.profiles);
+      setCurrentProfile(quickBrowseConfig.profiles[0]);
     };
 
     loadBookmarks();
-  }, []);
+  }, [storageManager]);
 
   useEffect(() => {
     const handleKeyDown = (event : KeyboardEvent) => {
       if (shortcutsActive && event.key.length === 1) {
-        const selectedBookmark = bookmarkCollection.findBookmarkForKeyboardShortcut(event.key);
+        const selectedBookmark = currentProfile.bookmarks.findBookmarkForKeyboardShortcut(event.key);
         // Uncomment the line below for testing purposes if necessary
         // alert(selectedBookmark?.name);
         if (selectedBookmark !== undefined && window.browser) {
@@ -45,7 +49,7 @@ function App() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [shortcutsActive, bookmarkCollection]);
+  }, [shortcutsActive, currentProfile.bookmarks]);
 
   const handleShortcutsDisabled = () => {
     setShortcutsActive(false);
@@ -56,21 +60,17 @@ function App() {
   };
 
   const handleBookmarkCollectionChanged = (updatedCollection: BookmarkCollection) => {
-    setBookmarkCollection(updatedCollection);
-    // Save bookmarks to storage whenever they are updated
-    browser.storage.local.set({
-      [STORAGE_KEY]: updatedCollection.bookmarksOrderedByName.map((bookmark: Bookmark) => ({
-        name: bookmark.name,
-        url: bookmark.url,
-        shortcutKey: bookmark.shortcutKey,
-      })),
-    });
+    setCurrentProfile(new QuickBrowseProfile(currentProfile.name, updatedCollection, currentProfile.icon));
+    storageManager.saveQuickBrowseConfig(new QuickBrowseUserConfig([new QuickBrowseProfile("Home", updatedCollection, "")]));
   };
+
+  
 
   return (
     <div className="App">
+      <ProfileSelector profiles={availableProfiles} activeProfile={currentProfile} onSelectionChanged={selection => setCurrentProfile(selection)}/>
       <BookmarkCollectionPanel
-        bookmarkCollection={bookmarkCollection}
+        bookmarkCollection={currentProfile.bookmarks}
         shortcutsDisabled={handleShortcutsDisabled}
         shortcutsEnabled={handleShortcutsEnabled}
         bookmarkCollectionChanged={handleBookmarkCollectionChanged}

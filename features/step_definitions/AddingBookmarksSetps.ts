@@ -1,5 +1,5 @@
 import { Given, When } from '@cucumber/cucumber';
-import { TestContext } from '../TestContext';
+import { TestContext } from './TestContext';
 import { BookmarkCollection } from '../../src/model/BookmarkCollection';
 import { Bookmark } from '../../src/model/Bookmark';
 

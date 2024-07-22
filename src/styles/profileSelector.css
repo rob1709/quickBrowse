@@ -1,0 +1,40 @@
+  .profile-selector-bar {
+    justify-content: space-between;
+    padding: 5px;
+    padding-bottom: 0;
+    background-color: var(--primary-color);
+    text-align: left;
+  }
+
+.bookmark-button {
+    display: flex;
+    align-items: center;
+  }
+
+.profileIcon {
+    margin-right: 10px;
+}
+
+.profileSelector {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    margin-right: 3px; 
+    cursor: default;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+    color: var(--inactive-text-color);
+    background-color: var(--inactive-background);
+  }
+  
+  .profileSelector:hover {
+    color: var(--icon-color);
+  }
+  
+  .profileSelector.active {
+    background-color: var(--background-color);
+    cursor: default;
+    color: var(--text-color);
+  }

@@ -1,6 +1,6 @@
-import { Given, When, Then } from '@cucumber/cucumber';
+import { When, Then } from '@cucumber/cucumber';
 import { strict as assert } from 'assert';
-import { TestContext } from '../TestContext';
+import { TestContext } from './TestContext';
 
 
 When('I view bookmarks alphabetically by name', () => {

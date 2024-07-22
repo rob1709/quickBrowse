@@ -8,6 +8,7 @@ export function ThemeSelector() {
       setTheme(newTheme);
       document.documentElement.setAttribute('colour-theme', newTheme);
     };
-    return (<></>
+    return (
+      <></>
     );
 }

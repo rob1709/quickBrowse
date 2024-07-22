@@ -1,5 +1,5 @@
-import { Bookmark } from "../src/model/Bookmark";
-import { BookmarkCollection } from "../src/model/BookmarkCollection";
+import { Bookmark } from "../../src/model/Bookmark";
+import { BookmarkCollection } from "../../src/model/BookmarkCollection";
 
 export class TestContext {
 
