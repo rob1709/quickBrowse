@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { BookmarkCollection } from '../model/BookmarkCollection';
 import '../styles/App.css';
 import '../styles/colourThemes.css';
-import '../styles/addOrEditModal.css';
 import { AddBookmarkButton } from './AddBookmarkButton';
 import { BookmarkButton } from './BookmarkButton';
 import { AddOrEditBookmarkModal } from './AddOrEditBookmarkModal';
@@ -103,7 +102,7 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
       <div className={`modal-overlay ${deleteModalOpen ? 'active' : ''}`} onClick={() => setDeleteModalOpen(false)}></div>
       {deleteModalOpen && (
         <div className='modal-contents'>
-          <div className="add-edit-bookmark-modal">
+          <div className="add-edit-modal">
             <div className="modal-header">
               <h2>Delete {bookmarkToDelete?.name}?</h2>
             </div>

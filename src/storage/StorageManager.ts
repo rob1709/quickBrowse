@@ -1,4 +1,3 @@
-import { profile } from "console";
 import { Bookmark } from "../model/Bookmark";
 import { BookmarkCollection } from "../model/BookmarkCollection";
 import { QuickBrowseProfile } from "../model/QuickBrowseProfile";
@@ -40,7 +39,6 @@ export class BrowserManagedBookmarkLoader implements StorageManager {
     }
 
     saveQuickBrowseConfig(userConfig: QuickBrowseUserConfig): void {
-        alert ('Saving config')
         const configData = {
             profiles: userConfig.profiles.map(profile => ({
                 name: profile.name,

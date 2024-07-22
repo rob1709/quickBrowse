@@ -8,6 +8,10 @@
   min-width: 700px;
 }
 
+.a {
+  color: var(--icon-color)
+}
+
 .bookmark-panel {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

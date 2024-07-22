@@ -1,7 +1,6 @@
 // src/components/AddOrEditBookmarkModal.tsx
 import React, { useState } from 'react';
 import { Bookmark } from '../model/Bookmark';
-import '../styles/addOrEditModal.css';
 import '../styles/colourThemes.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes, faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -45,7 +44,7 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed,
   };
 
   return (
-    <div className="add-edit-bookmark-modal">
+    <div className="add-edit-modal">
       <div className="modal-header">
         <h2>{addMode ? "Add" : "Edit" } Bookmark</h2>
         <button className="close-button" onClick={modalClosed}>

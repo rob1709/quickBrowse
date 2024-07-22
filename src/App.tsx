@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import './styles/App.css';
 import './styles/colourThemes.css';
+import './styles/addOrEditModal.css';
 import { BookmarkCollection } from './model/BookmarkCollection';
 import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';
-import { BrowserManagedBookmarkLoader } from './storage/StorageManager';
+import { BrowserManagedBookmarkLoader, LocalBookmarkLoader } from './storage/StorageManager';
 import { QuickBrowseProfile } from './model/QuickBrowseProfile';
 import { QuickBrowseUserConfig } from './model/QuickBrowseUserConfig';
 import { ProfileSelector } from './components/ProfileSelector';
@@ -13,7 +14,6 @@ function App() {
   const [availableProfiles, setAvailableProfiles] = useState<QuickBrowseProfile[]>([]);
   const [activeProfile, setActiveProfile] = useState(new QuickBrowseProfile("", new BookmarkCollection([]), ""));
 
-  //const [bookmarkCollection, setBookmarkCollection] = useState(new BookmarkCollection([]));
   const [shortcutsActive, setShortcutsActive] = useState(true);
 
   //const bookmarkLoader : BookmarkLoader = new BrowserManagedBookmarkLoader();
@@ -70,11 +70,16 @@ function App() {
     storageManager.saveQuickBrowseConfig(new QuickBrowseUserConfig([new QuickBrowseProfile("Home", updatedCollection, "")], activeProfile));
   };
 
-  
+  const handleProfilesChanged = (updatedProfiles: QuickBrowseProfile[], activeProfile: QuickBrowseProfile) => {
+    setAvailableProfiles(updatedProfiles);
+    storageManager.saveQuickBrowseConfig(new QuickBrowseUserConfig(updatedProfiles, activeProfile));
+  }
 
   return (
     <div className="App">
-      <ProfileSelector profiles={availableProfiles} activeProfile={activeProfile} onSelectionChanged={handleActiveProfileChanged}/>
+      <ProfileSelector profiles={availableProfiles} activeProfile={activeProfile} onSelectionChanged={handleActiveProfileChanged} 
+                       shortcutsDisabled={handleShortcutsDisabled} shortcutsEnabled={handleShortcutsEnabled}
+                       onProfilesChanged={handleProfilesChanged}/>
       <BookmarkCollectionPanel
         bookmarkCollection={activeProfile.bookmarks}
         shortcutsDisabled={handleShortcutsDisabled}
