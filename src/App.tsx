@@ -4,16 +4,13 @@ import './styles/colourThemes.css';
 import './styles/addOrEditModal.css';
 import { BookmarkCollection } from './model/BookmarkCollection';
 import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';
-import { BrowserManagedBookmarkLoader, LocalBookmarkLoader } from './storage/StorageManager';
-import { QuickBrowseProfile } from './model/QuickBrowseProfile';
-import { QuickBrowseUserConfig } from './model/QuickBrowseUserConfig';
+import { BrowserManagedBookmarkLoader } from './storage/StorageManager';
+import { QuickBrowseProfile as QuickBrowseProfle } from './model/QuickBrowseProfile';
 import { ProfileSelector } from './components/ProfileSelector';
 
 function App() {
-  
-  const [availableProfiles, setAvailableProfiles] = useState<QuickBrowseProfile[]>([]);
-  const [activeProfile, setActiveProfile] = useState(new QuickBrowseProfile("", new BookmarkCollection([]), ""));
 
+  const [quickBrowseProfile, setQuickBrowseProfile] = useState<QuickBrowseProfle>(new QuickBrowseProfle([], new BookmarkCollection("", "", [])));
   const [shortcutsActive, setShortcutsActive] = useState(true);
 
   //const bookmarkLoader : BookmarkLoader = new BrowserManagedBookmarkLoader();
@@ -24,22 +21,22 @@ function App() {
     // Load bookmarks from storage on startup
     const loadBookmarks = async () => {
       const quickBrowseConfig = await storageManager.loadQuickBrowseConfig()
-      setAvailableProfiles(quickBrowseConfig.profiles);
-      setActiveProfile(quickBrowseConfig.activeProfile);
+      setQuickBrowseProfile(quickBrowseConfig);
     };
 
     loadBookmarks();
   }, [storageManager]);
 
-  function handleActiveProfileChanged(profile: QuickBrowseProfile) {
-    setActiveProfile(profile);
-    storageManager.saveQuickBrowseConfig(new QuickBrowseUserConfig(availableProfiles, profile));
+  function handleSwitchToNewCollection(collection: BookmarkCollection) {
+    const newProfile = new QuickBrowseProfle(quickBrowseProfile.collections, collection);
+    setQuickBrowseProfile(newProfile);
+    storageManager.saveQuickBrowseProfile(newProfile);
   }
 
   useEffect(() => {
     const handleKeyDown = (event : KeyboardEvent) => {
       if (shortcutsActive && event.key.length === 1) {
-        const selectedBookmark = activeProfile.bookmarks.findBookmarkForKeyboardShortcut(event.key);
+        const selectedBookmark = quickBrowseProfile.activeCollection.findBookmarkForKeyboardShortcut(event.key);
         // Uncomment the line below for testing purposes if necessary
         // alert(selectedBookmark?.name);
         if (selectedBookmark !== undefined && window.browser) {
@@ -55,7 +52,7 @@ function App() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [shortcutsActive, activeProfile.bookmarks]);
+  }, [shortcutsActive, quickBrowseProfile.activeCollection]);
 
   const handleShortcutsDisabled = () => {
     setShortcutsActive(false);
@@ -66,26 +63,31 @@ function App() {
   };
 
   const handleBookmarkCollectionChanged = (updatedCollection: BookmarkCollection) => {
-    setActiveProfile(new QuickBrowseProfile(activeProfile.name, updatedCollection, activeProfile.icon));
-    storageManager.saveQuickBrowseConfig(new QuickBrowseUserConfig([new QuickBrowseProfile("Home", updatedCollection, "")], activeProfile));
+    const newProfile = quickBrowseProfile.updateCollection(quickBrowseProfile.activeCollection, updatedCollection);
+    setQuickBrowseProfile(newProfile);
+    storageManager.saveQuickBrowseProfile(newProfile);
   };
 
-  const handleProfilesChanged = (updatedProfiles: QuickBrowseProfile[], activeProfile: QuickBrowseProfile) => {
-    setAvailableProfiles(updatedProfiles);
-    storageManager.saveQuickBrowseConfig(new QuickBrowseUserConfig(updatedProfiles, activeProfile));
+  const handleCollectionsChanged = (updatedCollections: BookmarkCollection[], activeCollection: BookmarkCollection) => {
+    const quickBrowseProfile = new QuickBrowseProfle(updatedCollections, activeCollection);
+    setQuickBrowseProfile(quickBrowseProfile);
+    storageManager.saveQuickBrowseProfile(quickBrowseProfile);
   }
 
   return (
     <div className="App">
-      <ProfileSelector profiles={availableProfiles} activeProfile={activeProfile} onSelectionChanged={handleActiveProfileChanged} 
+
+      <ProfileSelector profiles={quickBrowseProfile.collections} activeProfile={quickBrowseProfile.activeCollection} onSelectionChanged={handleSwitchToNewCollection} 
                        shortcutsDisabled={handleShortcutsDisabled} shortcutsEnabled={handleShortcutsEnabled}
-                       onProfilesChanged={handleProfilesChanged}/>
+                       onProfilesChanged={handleCollectionsChanged}/>
+
       <BookmarkCollectionPanel
-        bookmarkCollection={activeProfile.bookmarks}
+        bookmarkCollection={quickBrowseProfile.activeCollection}
         shortcutsDisabled={handleShortcutsDisabled}
         shortcutsEnabled={handleShortcutsEnabled}
         bookmarkCollectionChanged={handleBookmarkCollectionChanged}
       />
+
     </div>
   );
 }

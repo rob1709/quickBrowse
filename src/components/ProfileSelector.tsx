@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { QuickBrowseProfile } from "../model/QuickBrowseProfile";
 import '../styles/profileSelector.css';
-import { AddOrEditProfileModal } from "./AddOrEditProfileModal";
+import { AddOrEditCollectionModal } from "./AddOrEditProfileModal";
 import { BookmarkCollection } from "../model/BookmarkCollection";
 
 interface ProfileSelectorProps {
-  profiles: QuickBrowseProfile[];
-  activeProfile: QuickBrowseProfile;
-  onSelectionChanged: (profile: QuickBrowseProfile) => void;
-  onProfilesChanged: (updatedProfiles: QuickBrowseProfile[], activeProfile: QuickBrowseProfile) => void;
+  profiles: BookmarkCollection[];
+  activeProfile: BookmarkCollection;
+  onSelectionChanged: (profile: BookmarkCollection) => void;
+  onProfilesChanged: (updatedProfiles: BookmarkCollection[], activeProfile: BookmarkCollection) => void;
   shortcutsEnabled: () => void;
   shortcutsDisabled: () => void;
 }
@@ -17,7 +16,7 @@ export function ProfileSelector({ profiles, onSelectionChanged, activeProfile, s
   
   const [addModalOpen, setAddModalOpen] = useState(false);
 
-  const handleChange = (original: QuickBrowseProfile, updated: QuickBrowseProfile) => {
+  const handleChange = (original: BookmarkCollection, updated: BookmarkCollection) => {
     const newProfiles = [...profiles, updated];
     onProfilesChanged(newProfiles, updated);
     handleCloseModal();
@@ -57,9 +56,9 @@ export function ProfileSelector({ profiles, onSelectionChanged, activeProfile, s
       <div className={`modal-overlay ${addModalOpen ? 'active' : ''}`} onClick={() => setAddModalOpen(false)}></div>
       {addModalOpen && (
         <div className='modal-contents'>
-          <AddOrEditProfileModal
-            profile={new QuickBrowseProfile("", new BookmarkCollection([]),"")}
-            profileChanged={handleChange}
+          <AddOrEditCollectionModal
+            profile={new BookmarkCollection("", "", [])}
+            collectionChanged={handleChange}
             modalClosed={handleCloseModal}
             addMode={true}
           />

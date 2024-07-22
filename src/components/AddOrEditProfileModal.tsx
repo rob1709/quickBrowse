@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import '../styles/colourThemes.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { QuickBrowseProfile } from '../model/QuickBrowseProfile';
+import { BookmarkCollection } from '../model/BookmarkCollection';
 
 interface AddOrEditProfileModalProps {
-  profile: QuickBrowseProfile;
-  profileChanged: (original: QuickBrowseProfile, edited: QuickBrowseProfile) => void;
+  profile: BookmarkCollection;
+  collectionChanged: (original: BookmarkCollection, edited: BookmarkCollection) => void;
   modalClosed: () => void;
   addMode: Boolean;
 }
 
-export function AddOrEditProfileModal({ profile, profileChanged, modalClosed, addMode }: AddOrEditProfileModalProps) {
+export function AddOrEditCollectionModal({ profile, collectionChanged: profileChanged, modalClosed, addMode }: AddOrEditProfileModalProps) {
   const [name, setName] = useState(profile.name);
   const [icon, setIcon] = useState(profile.icon);
 
   const handleConfirm = () => {
-    const updatedProfile = new QuickBrowseProfile(name, profile.bookmarks, icon);
+    const updatedProfile = new BookmarkCollection(name, icon, profile.bookmarksOrderedByName);
     profileChanged(profile, updatedProfile);
   };
 
