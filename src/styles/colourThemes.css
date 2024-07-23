@@ -13,8 +13,8 @@
   --header-background: #333;
   --header-text: #5c5b5b;
   --error-text-color: rgb(250, 101, 101);
-  --inactive-text-color: #838282;
-  --inactive-background: #3e3d3d;
+  --inactive-text-color: #5e5d5d;
+  --inactive-background: #343333;
   }
 
   [colour-theme="light"] {

@@ -78,7 +78,7 @@ function App() {
   return (
     <div className="App">
 
-      <ProfileSelector profiles={quickBrowseProfile.collections} activeProfile={quickBrowseProfile.activeCollection} onSelectionChanged={handleSwitchToNewCollection} 
+      <ProfileSelector collections={quickBrowseProfile.collections} activeCollection={quickBrowseProfile.activeCollection} onSelectionChanged={handleSwitchToNewCollection} 
                        shortcutsDisabled={handleShortcutsDisabled} shortcutsEnabled={handleShortcutsEnabled}
                        onProfilesChanged={handleCollectionsChanged}/>
 

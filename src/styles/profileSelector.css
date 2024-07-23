@@ -19,7 +19,7 @@
     display: inline-flex;
     align-items: center;
     padding: 10px 20px;
-    margin-right: 3px; 
+    margin-right: 5px; 
     cursor: default;
     border-bottom: none;
     border-radius: 5px 5px 0 0;
@@ -29,8 +29,9 @@
     background-color: var(--inactive-background);
   }
   
-  .profileSelector:hover {
+  .clickable:hover {
     color: var(--icon-color);
+    cursor: pointer;
   }
   
   .profileSelector.active {

@@ -2,22 +2,24 @@ import { useState } from "react";
 import '../styles/profileSelector.css';
 import { AddOrEditCollectionModal } from "./AddOrEditProfileModal";
 import { BookmarkCollection } from "../model/BookmarkCollection";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark, faPen } from "@fortawesome/free-solid-svg-icons";
 
 interface ProfileSelectorProps {
-  profiles: BookmarkCollection[];
-  activeProfile: BookmarkCollection;
+  collections: BookmarkCollection[];
+  activeCollection: BookmarkCollection;
   onSelectionChanged: (profile: BookmarkCollection) => void;
   onProfilesChanged: (updatedProfiles: BookmarkCollection[], activeProfile: BookmarkCollection) => void;
   shortcutsEnabled: () => void;
   shortcutsDisabled: () => void;
 }
 
-export function ProfileSelector({ profiles, onSelectionChanged, activeProfile, shortcutsDisabled, shortcutsEnabled, onProfilesChanged }: ProfileSelectorProps) {
+export function ProfileSelector({ collections, onSelectionChanged, activeCollection, shortcutsDisabled, shortcutsEnabled, onProfilesChanged }: ProfileSelectorProps) {
   
   const [addModalOpen, setAddModalOpen] = useState(false);
 
   const handleChange = (original: BookmarkCollection, updated: BookmarkCollection) => {
-    const newProfiles = [...profiles, updated];
+    const newProfiles = [...collections, updated];
     onProfilesChanged(newProfiles, updated);
     handleCloseModal();
   };
@@ -36,16 +38,27 @@ export function ProfileSelector({ profiles, onSelectionChanged, activeProfile, s
     setAddModalOpen(true);
   }
 
+  function onEditClick(collection: BookmarkCollection) {
+    throw new Error("Function not implemented.");
+  }
+
+  function onDeleteClick(bookmark: BookmarkCollection) {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <div className="profile-selector-bar">
-      {profiles.map((profile, index) => (
+      {collections.map((collection, index) => (
         <span
           key={index}
-          className={"profileSelector" + (profile === activeProfile ? " active" : "")}
-          onClick={() => onSelectionChanged(profile)}
+          className={"profileSelector" + (collection === activeCollection ? " active" : "")}
         >
-          <i className={"fa " + profile.icon + " profileIcon"}></i>
-          {profile.name}
+          <span className="clickable" onClick={() => onSelectionChanged(collection)} style={{paddingRight: "15px"}}>
+          <i className={"fa " + collection.icon + " profileIcon"}></i>
+          {collection.name}
+        </span>
+          <FontAwesomeIcon icon={faPen} className="button-icon" onClick={() => onEditClick(collection)}  />
+          <FontAwesomeIcon icon={faCircleXmark} className="button-icon" onClick={() => onDeleteClick(collection)} />
         </span>
       ))}
 
