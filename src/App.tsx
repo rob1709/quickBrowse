@@ -15,8 +15,8 @@ function App() {
   const [shortcutsActive, setShortcutsActive] = useState(true);
 
   //const bookmarkLoader : BookmarkLoader = new BrowserManagedBookmarkLoader();
-  const storageManager = useMemo(() => new LocalBookmarkLoader(), []);
-  //const storageManager = useMemo(() => new BrowserManagedBookmarkLoader(), []);
+  //const storageManager = useMemo(() => new LocalBookmarkLoader(), []);
+  const storageManager = useMemo(() => new BrowserManagedBookmarkLoader(), []);
 
   useEffect(() => {
     // Load bookmarks from storage on startup
