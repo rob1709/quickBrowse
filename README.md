@@ -2,7 +2,7 @@
 
 Firefox extension to allow quick navigation to bookmarked web pages via keyboard shortcuts.
 
-<img width="792" alt="image" src="https://github.com/user-attachments/assets/87f5df17-5df8-4d8d-b77d-488337f6b328">
+<img width="752" alt="image" src="https://github.com/user-attachments/assets/1db51d09-4263-45a7-80d1-9f94cbc4bd1a">
 
 # Build Guide
 
@@ -12,7 +12,12 @@ From the root folder, run:
 
 This generates a build folder. Zip the contents of this (note the contents, not the folder itself; Firefox requires manifest.json to sit in the root once unzipped). 
 
-Upload to Firefox's dev / extension hub: https://addons.mozilla.org. You'll also need to upload the raw source code too. Do this by zipping the contents, excluding build and npm modules (firefox limit the size of the zipped source folder).
+Upload to Firefox's dev / extension hub: https://addons.mozilla.org. You'll also need to upload the raw source code too. Do this by zipping the contents, excluding build, npm modules, and releases (firefox limit the size of the zipped source folder, could probably exclude more I expect, e.g. package lock etc).
+
+I added the following notes for the review:
+
+From root, do npm run build, and use index.html as the add-on.
+I used npm version 9.5.1, node version 18.16.0
 
 # Dev Guide
 
