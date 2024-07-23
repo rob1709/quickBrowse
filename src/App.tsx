@@ -80,7 +80,7 @@ function App() {
 
       <ProfileSelector collections={quickBrowseProfile.collections} activeCollection={quickBrowseProfile.activeCollection} onSelectionChanged={handleSwitchToNewCollection} 
                        shortcutsDisabled={handleShortcutsDisabled} shortcutsEnabled={handleShortcutsEnabled}
-                       onProfilesChanged={handleCollectionsChanged}/>
+                       onCollectionsChanged={handleCollectionsChanged}/>
 
       <BookmarkCollectionPanel
         bookmarkCollection={quickBrowseProfile.activeCollection}

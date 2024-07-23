@@ -6,6 +6,7 @@ import { AddBookmarkButton } from './AddBookmarkButton';
 import { BookmarkButton } from './BookmarkButton';
 import { AddOrEditBookmarkModal } from './AddOrEditBookmarkModal';
 import { Bookmark } from '../model/Bookmark';
+import { Warning } from './Warning';
 
 interface BookmarkCollectionPanelProps {
   bookmarkCollection: BookmarkCollection;
@@ -101,20 +102,11 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
 
       <div className={`modal-overlay ${deleteModalOpen ? 'active' : ''}`} onClick={() => setDeleteModalOpen(false)}></div>
       {deleteModalOpen && (
-        <div className='modal-contents'>
-          <div className="add-edit-modal">
-            <div className="modal-header">
-              <h2>Delete {bookmarkToDelete?.name}?</h2>
-            </div>
-            <div className="modal-content">
-            <p className='modalText'>Are you sure you want to delete bookmark for {bookmarkToDelete?.name}?</p>
-            <div className="modal-buttons">
-              <button onClick={confirmDeleteBookmark}>Yes</button>
-              <button onClick={handleCloseModal} className="cancel-button">No</button>
-            </div>
-            </div>
-          </div>
-        </div>
+        <Warning title={"Delete " + bookmarkToDelete?.name + "?"}
+                 text={"Are you sure you want to delete bookmark for '" + bookmarkToDelete?.name + "'?"} 
+                 onCancel={handleCloseModal}
+                 onConfirm={confirmDeleteBookmark}
+       />
       )}
     </div>
   );

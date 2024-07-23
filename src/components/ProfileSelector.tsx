@@ -4,19 +4,22 @@ import { AddOrEditCollectionModal } from "./AddOrEditProfileModal";
 import { BookmarkCollection } from "../model/BookmarkCollection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faPen } from "@fortawesome/free-solid-svg-icons";
+import { Warning } from "./Warning";
 
 interface ProfileSelectorProps {
   collections: BookmarkCollection[];
   activeCollection: BookmarkCollection;
   onSelectionChanged: (profile: BookmarkCollection) => void;
-  onProfilesChanged: (updatedProfiles: BookmarkCollection[], activeProfile: BookmarkCollection) => void;
+  onCollectionsChanged: (updatedCollections: BookmarkCollection[], activeColleciton: BookmarkCollection) => void;
   shortcutsEnabled: () => void;
   shortcutsDisabled: () => void;
 }
 
-export function ProfileSelector({ collections, onSelectionChanged, activeCollection, shortcutsDisabled, shortcutsEnabled, onProfilesChanged }: ProfileSelectorProps) {
+export function ProfileSelector({ collections, onSelectionChanged, activeCollection, shortcutsDisabled, shortcutsEnabled, onCollectionsChanged: onProfilesChanged }: ProfileSelectorProps) {
   
   const [addModalOpen, setAddModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [collectionToDelete, setCollectionToDelete] = useState<BookmarkCollection | null>(null);
 
   const handleChange = (original: BookmarkCollection, updated: BookmarkCollection) => {
     const newProfiles = [...collections, updated];
@@ -26,6 +29,7 @@ export function ProfileSelector({ collections, onSelectionChanged, activeCollect
 
   const handleCloseModal = () => {
     setAddModalOpen(false);
+    setDeleteModalOpen(false);
     shortcutsEnabled();
   };
 
@@ -42,8 +46,17 @@ export function ProfileSelector({ collections, onSelectionChanged, activeCollect
     throw new Error("Function not implemented.");
   }
 
-  function onDeleteClick(bookmark: BookmarkCollection) {
-    throw new Error("Function not implemented.");
+  const onDeleteClick = (collection: BookmarkCollection) => {
+    setCollectionToDelete(collection);
+    shortcutsDisabled();
+    setDeleteModalOpen(true);
+  };
+
+  function confirmDelete() {
+    const updatedCollections = collections.filter(collection => collection !== collectionToDelete);
+    const newActiveCollection = (activeCollection === collectionToDelete) ? collections[0] : activeCollection;
+    onProfilesChanged(updatedCollections, newActiveCollection);
+    handleCloseModal();
   }
 
   return (
@@ -76,6 +89,15 @@ export function ProfileSelector({ collections, onSelectionChanged, activeCollect
             addMode={true}
           />
         </div>
+      )}
+
+<div className={`modal-overlay ${deleteModalOpen ? 'active' : ''}`} onClick={() => setDeleteModalOpen(false)}></div>
+      {deleteModalOpen && (
+        <Warning title={"Delete " + collectionToDelete?.name + "?"}
+                 text={"Are you sure you want to delete collection '" + collectionToDelete?.name + "'?"} 
+                 onCancel={handleCloseModal}
+                 onConfirm={confirmDelete}
+        />
       )}
 
     </div>
