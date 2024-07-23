@@ -5,13 +5,13 @@ import { faCheck, faTimes, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { BookmarkCollection } from '../model/BookmarkCollection';
 
 interface AddOrEditProfileModalProps {
-  profile: BookmarkCollection;
+  collection: BookmarkCollection;
   collectionChanged: (original: BookmarkCollection, edited: BookmarkCollection) => void;
   modalClosed: () => void;
   addMode: Boolean;
 }
 
-export function AddOrEditCollectionModal({ profile, collectionChanged: profileChanged, modalClosed, addMode }: AddOrEditProfileModalProps) {
+export function AddOrEditCollectionModal({ collection: profile, collectionChanged: profileChanged, modalClosed, addMode }: AddOrEditProfileModalProps) {
   const [name, setName] = useState(profile.name);
   const [icon, setIcon] = useState(profile.icon);
 

@@ -20,10 +20,19 @@ export function ProfileSelector({ collections, onSelectionChanged, activeCollect
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [collectionToDelete, setCollectionToDelete] = useState<BookmarkCollection | null>(null);
+  const [selectedCollection, setSelectedCollection] = useState(new BookmarkCollection("", "", []));
 
   const handleChange = (original: BookmarkCollection, updated: BookmarkCollection) => {
-    const newProfiles = [...collections, updated];
-    onProfilesChanged(newProfiles, updated);
+    var newCollections;
+
+    if (collections.includes(original)) {
+      newCollections = collections.map( collection => 
+        collection === original ? updated : collection
+      );
+    } else {
+      newCollections = [...collections, updated];
+    }
+    onProfilesChanged(newCollections, updated);
     handleCloseModal();
   };
 
@@ -34,16 +43,20 @@ export function ProfileSelector({ collections, onSelectionChanged, activeCollect
   };
 
   const addNewProfile = () => {
+    setSelectedCollection(new BookmarkCollection("", "", []));
+    shortcutsDisabled();
     openModal();
+  }
+
+  function onEditClick(collection: BookmarkCollection) {
+    setSelectedCollection(collection);
+    shortcutsDisabled();
+    setAddModalOpen(true);
   }
 
   const openModal = () => {
     shortcutsDisabled();
     setAddModalOpen(true);
-  }
-
-  function onEditClick(collection: BookmarkCollection) {
-    throw new Error("Function not implemented.");
   }
 
   const onDeleteClick = (collection: BookmarkCollection) => {
@@ -83,7 +96,7 @@ export function ProfileSelector({ collections, onSelectionChanged, activeCollect
       {addModalOpen && (
         <div className='modal-contents'>
           <AddOrEditCollectionModal
-            profile={new BookmarkCollection("", "", [])}
+            collection={selectedCollection}
             collectionChanged={handleChange}
             modalClosed={handleCloseModal}
             addMode={true}
