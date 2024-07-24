@@ -20,3 +20,19 @@ Scenario: Pressing a keyboard shortcut that's defined
     | a               | p              | A           | https://www.amazon.co.uk    |
     | a               | A              | a           | https://www.amazon.co.uk    |
     | a               | A              | A           | https://www.apple.com       |
+
+  Scenario: Shortcuts can contain dynamic placeholders
+  Given I have an empty list of bookmarks
+  And I add a bookmark called 'Amazon' for 'www.amazon.co.uk/item/{Item ID}/country/{Country Code}' with shortcut 'a'
+  When the extension is open and I press 'a'
+  Then this asks me to enter a value for placeholder 'Item ID'
+  And this asks me to enter a value for placeholder 'Country Code'
+
+ 
+Scenario: Shortcuts can contain dynamic placeholders
+  Given I have an empty list of bookmarks
+  And I add a bookmark called 'Amazon' for 'www.amazon.co.uk/item/{Item ID}/country/{Country Code}' with shortcut 'a'
+  When the extension is open and I press 'a'
+  And I set placeholder 'Item ID' to '363'
+  And I set placeholder 'Country Code' to 'GB'
+  Then the URL is 'https://www.amazon.co.uk/item/363/country/GB'

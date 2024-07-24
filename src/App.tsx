@@ -4,19 +4,22 @@ import './styles/colourThemes.css';
 import './styles/addOrEditModal.css';
 import { BookmarkCollection } from './model/BookmarkCollection';
 import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';
-import { BrowserManagedBookmarkLoader } from './storage/StorageManager';
+import { BrowserManagedBookmarkLoader, QuickBrowseStorageManager } from './storage/StorageManager';
 import { QuickBrowseProfile as QuickBrowseProfle } from './model/QuickBrowseProfile';
 import { ProfileSelector } from './components/ProfileSelector';
 import { LocalBookmarkLoader } from './storage/LocalStorageManager';
+import { Bookmark } from './model/Bookmark';
 
 function App() {
 
   const [quickBrowseProfile, setQuickBrowseProfile] = useState<QuickBrowseProfle>(new QuickBrowseProfle([], new BookmarkCollection("", "", [])));
   const [shortcutsActive, setShortcutsActive] = useState(true);
 
-  //const bookmarkLoader : BookmarkLoader = new BrowserManagedBookmarkLoader();
-  //const storageManager = useMemo(() => new LocalBookmarkLoader(), []);
-  const storageManager = useMemo(() => new BrowserManagedBookmarkLoader(), []);
+  const localMode = true;
+  const localStorageManager = useMemo(() => new LocalBookmarkLoader(), []);
+  const browserStorageManager = useMemo(() => new BrowserManagedBookmarkLoader(), []);
+  const storageManager: QuickBrowseStorageManager = localMode ? localStorageManager : browserStorageManager ;
+  
 
   useEffect(() => {
     // Load bookmarks from storage on startup
@@ -34,26 +37,37 @@ function App() {
     storageManager.saveQuickBrowseProfile(newProfile);
   }
 
+
+  const bookmarkSelected = (selectedBookmark: Bookmark) => {
+
+    const url = selectedBookmark?.getUrlForSelectedShorctut([]);
+
+    if (localMode) {
+      alert(selectedBookmark?.name + ": " + url);
+    } else if (selectedBookmark !== undefined && window.browser) {
+      window.browser.tabs.update({ url: selectedBookmark.baseUrl }).then(() => {
+        window.close();
+      });
+    }
+  }
+
   useEffect(() => {
     const handleKeyDown = (event : KeyboardEvent) => {
       if (shortcutsActive && event.key.length === 1) {
         const selectedBookmark = quickBrowseProfile.activeCollection.findBookmarkForKeyboardShortcut(event.key);
-        // Uncomment the line below for testing purposes if necessary
-        // alert(selectedBookmark?.name);
-        if (selectedBookmark !== undefined && window.browser) {
-          window.browser.tabs.update({ url: selectedBookmark.url }).then(() => {
-            window.close();
-          });
+        if (selectedBookmark) {
+          bookmarkSelected(selectedBookmark);
         }
-      }
-    };
+      };
+
+    }
 
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [shortcutsActive, quickBrowseProfile.activeCollection]);
+  }, [shortcutsActive, quickBrowseProfile.activeCollection, localMode]);
 
   const handleShortcutsDisabled = () => {
     setShortcutsActive(false);
@@ -87,6 +101,7 @@ function App() {
         shortcutsDisabled={handleShortcutsDisabled}
         shortcutsEnabled={handleShortcutsEnabled}
         bookmarkCollectionChanged={handleBookmarkCollectionChanged}
+        bookmarkSelected={bookmarkSelected}
       />
 
     </div>

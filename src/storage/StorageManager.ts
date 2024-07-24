@@ -45,7 +45,7 @@ export class BrowserManagedBookmarkLoader implements QuickBrowseStorageManager {
                 icon: collection.icon,
                 bookmarks: collection.bookmarksOrderedByName.map((bookmark: Bookmark) => ({
                     name: bookmark.name,
-                    url: bookmark.url,
+                    url: bookmark.baseUrl,
                     shortcutKey: bookmark.shortcutKey,
                 })),
             })),

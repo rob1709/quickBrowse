@@ -13,9 +13,10 @@ interface BookmarkCollectionPanelProps {
   shortcutsEnabled: () => void;
   shortcutsDisabled: () => void;
   bookmarkCollectionChanged: (updatedBookmarks: BookmarkCollection) => void;
+  bookmarkSelected: (selectedBookmark: Bookmark) => void;
 }
 
-export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled, shortcutsEnabled, bookmarkCollectionChanged }: BookmarkCollectionPanelProps) {
+export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled, shortcutsEnabled, bookmarkCollectionChanged, bookmarkSelected }: BookmarkCollectionPanelProps) {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -70,7 +71,7 @@ export function BookmarkCollectionPanel({ bookmarkCollection, shortcutsDisabled,
   return (
     <div className="bookmark-panel add-bookmark">
       {bookmarkCollection.bookmarksOrderedByName.map((bookmark, index) => (
-        <BookmarkButton key={index} bookmark={bookmark} onEditClick={handleEditClick} onDeleteClick={handleDeleteClick} />
+        <BookmarkButton key={index} onSelect={bookmarkSelected} bookmark={bookmark} onEditClick={handleEditClick} onDeleteClick={handleDeleteClick} />
       ))}
       <AddBookmarkButton onClick={handleAddClick} />
 

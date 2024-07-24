@@ -11,13 +11,13 @@ Then('my bookmark list contains an entry for {string} with url {string}', (name:
   const bookmarks = TestContext.instance.bookmarkCollection;
   const bookmarkWithMatchingName = bookmarks.bookmarksOrderedByName.find(bookmark => bookmark.name === name);
   assert(bookmarkWithMatchingName !== undefined, 'Bookmark not found in collection. Collection contained ' + TestContext.instance.bookmarkCollection.print());
-  assert.equal(bookmarkWithMatchingName.url, url, `Expected URL to be "${url}", but found "${bookmarkWithMatchingName.url}"`);
+  assert.equal(bookmarkWithMatchingName.baseUrl, url, `Expected URL to be "${url}", but found "${bookmarkWithMatchingName.baseUrl}"`);
 });
 
 Then(/^bookmark (\d+) is for '([^']+)' with url '([^']+)'$/, function (positionIndexedAtOne: number, bookmarkName: string, bookmarkUrl: string) {
   const bookmarks = TestContext.instance.bookmarkCollection.bookmarksOrderedByName;
   assert.equal(bookmarks[positionIndexedAtOne - 1].name, bookmarkName, `Expected bookmark at position ${positionIndexedAtOne} to have name ${bookmarkName}`);
-  assert.equal(bookmarks[positionIndexedAtOne - 1].url, bookmarkUrl, `Expected bookmark at position ${positionIndexedAtOne} to have URL ${bookmarkUrl}`);
+  assert.equal(bookmarks[positionIndexedAtOne - 1].baseUrl, bookmarkUrl, `Expected bookmark at position ${positionIndexedAtOne} to have URL ${bookmarkUrl}`);
 });
 Then('the favicon for {string} is {string}', (shortcutName: string, expectedFavicon: string) => {
     const bookmarks = TestContext.instance.bookmarkCollection.bookmarksOrderedByName;
@@ -40,3 +40,8 @@ Then('this states {string}', (expectedError: string) => {
 Then('this is valid', () => {
   assert.equal(TestContext.instance.validationResult, undefined, "Expected no validation error but got " + TestContext.instance.validationResult);
 })
+
+Then('this asks me to enter a value for placeholder {string}', (expectedPlaceholder: string) => {
+  assert(TestContext.instance.selectedBookmark?.dynamicPlaceholders.includes(expectedPlaceholder));
+})
+

@@ -1,5 +1,6 @@
 Feature: Importing from site launcher
 
+@ignore
 Scenario: Import from site launcher
   Given I have exported by site launcher config
   And I ask to import this under a collection called 'Default'

@@ -17,7 +17,7 @@ interface AddOrEditBookmarkModalProps {
 export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed, addMode, collection }: AddOrEditBookmarkModalProps) {
   const [name, setName] = useState(bookmark.name);
   const [error, setError] = useState("");
-  const [url, setUrl] = useState(bookmark.url);
+  const [url, setUrl] = useState(bookmark.baseUrl);
   const [shortcutKey, setShortcutKey] = useState(bookmark.shortcutKey);
 
   const handleConfirm = () => {

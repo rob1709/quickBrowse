@@ -7,14 +7,15 @@ import { faCircleXmark, faPen } from '@fortawesome/free-solid-svg-icons';
 
 interface BookmarkButtonProps {
   bookmark: Bookmark;
+  onSelect: (selectedBookmark: Bookmark) => void;
   onEditClick: (bookmark: Bookmark) => void;
   onDeleteClick: (bookmark: Bookmark) => void;
 }
 
-export function BookmarkButton({ bookmark, onEditClick, onDeleteClick }: BookmarkButtonProps) {
+export function BookmarkButton({ bookmark, onSelect, onEditClick, onDeleteClick }: BookmarkButtonProps) {
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
-    browser.tabs.update({ url: bookmark.url }).then(() => {
+    browser.tabs.update({ url: bookmark.baseUrl }).then(() => {
       window.close();
     });
   };
@@ -22,11 +23,10 @@ export function BookmarkButton({ bookmark, onEditClick, onDeleteClick }: Bookmar
   return (
     <div className="bookmark-button">
       <a
-        href={bookmark.url}
         target="_self"
         rel="noopener noreferrer"
         className="bookmark-text"
-        onClick={handleClick}
+        onClick={() => onSelect(bookmark)}
       >
         <img src={bookmark.favicon} alt={`${bookmark.name.charAt(0)}`} className="bookmark-icon" />
         {bookmark.name}
