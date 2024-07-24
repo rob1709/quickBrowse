@@ -4,20 +4,25 @@ import './styles/colourThemes.css';
 import './styles/addOrEditModal.css';
 import { BookmarkCollection } from './model/BookmarkCollection';
 import { BookmarkCollectionPanel } from './components/BookmarkCollectionPanel';
-import { BrowserManagedBookmarkLoader, QuickBrowseStorageManager } from './storage/StorageManager';
+import { QuickBrowseStorageManager } from './storage/StorageManager';
 import { QuickBrowseProfile as QuickBrowseProfle } from './model/QuickBrowseProfile';
 import { ProfileSelector } from './components/ProfileSelector';
 import { LocalBookmarkLoader } from './storage/LocalStorageManager';
 import { Bookmark } from './model/Bookmark';
+import { BrowserManagedStorageManager } from './storage/BrowserStorageManager';
+import { DynamicUrlBuilder } from './components/DynamicUrlBuilder';
+import { BookmarkDynamicPlaceholder } from './model/BookmarkDynamicPlaceholder';
 
 function App() {
 
   const [quickBrowseProfile, setQuickBrowseProfile] = useState<QuickBrowseProfle>(new QuickBrowseProfle([], new BookmarkCollection("", "", [])));
   const [shortcutsActive, setShortcutsActive] = useState(true);
+  const [placeholderModalOpen, setPlaceholderModalOpen] = useState(false);
+  const [selectedBookmark, setSelectedBookmark] = useState<Bookmark>(new Bookmark("", "", ""));
 
   const localMode = true;
   const localStorageManager = useMemo(() => new LocalBookmarkLoader(), []);
-  const browserStorageManager = useMemo(() => new BrowserManagedBookmarkLoader(), []);
+  const browserStorageManager = useMemo(() => new BrowserManagedStorageManager(), []);
   const storageManager: QuickBrowseStorageManager = localMode ? localStorageManager : browserStorageManager ;
   
 
@@ -37,17 +42,27 @@ function App() {
     storageManager.saveQuickBrowseProfile(newProfile);
   }
 
-
   const bookmarkSelected = (selectedBookmark: Bookmark) => {
 
-    const url = selectedBookmark?.getUrlForSelectedShorctut([]);
+    if (selectedBookmark.dynamicPlaceholders.length > 0 ) {
+      setSelectedBookmark(selectedBookmark);
+      setPlaceholderModalOpen(true);
+    } else {
+      navigateToSelection(selectedBookmark, []);
+    }
+  }
 
-    if (localMode) {
-      alert(selectedBookmark?.name + ": " + url);
-    } else if (selectedBookmark !== undefined && window.browser) {
-      window.browser.tabs.update({ url: selectedBookmark.baseUrl }).then(() => {
+  function navigateToSelection(selectedBookmark: Bookmark, populatedPlaceholders: BookmarkDynamicPlaceholder[]) {
+    if (selectedBookmark) {
+      const url = selectedBookmark?.getUrlForSelectedShorctut([]);
+
+      if (localMode) {
+        alert(selectedBookmark?.name + ": " + url);
+      } else if (selectedBookmark !== undefined && window.browser) {
+        window.browser.tabs.update({ url: selectedBookmark.baseUrl }).then(() => {
         window.close();
-      });
+        });
+      }
     }
   }
 
@@ -103,7 +118,11 @@ function App() {
         bookmarkCollectionChanged={handleBookmarkCollectionChanged}
         bookmarkSelected={bookmarkSelected}
       />
-
+      <div className={`modal-overlay ${placeholderModalOpen ? 'active' : ''}`} onClick={() => setPlaceholderModalOpen(false)}></div>
+      {placeholderModalOpen && (
+        <DynamicUrlBuilder bookmark={selectedBookmark} onCancel={() => setPlaceholderModalOpen(false)} 
+                          onConfirm={(bookmark, dynamicPlaceholders) => { setPlaceholderModalOpen(false); navigateToSelection(bookmark, dynamicPlaceholders); }} />
+      )}
     </div>
   );
 }
