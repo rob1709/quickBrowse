@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Bookmark } from '../model/Bookmark';
 import { BookmarkDynamicPlaceholder } from '../model/BookmarkDynamicPlaceholder';
 import '../styles/App.css';
@@ -15,6 +15,18 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
   const [placeholderValues, setPlaceholderValues] = useState<{ [key: string]: string }>({});
   const [dynamicPlaceholders, setDynamicPlaceholders] = useState<BookmarkDynamicPlaceholder[]>(bookmark.dynamicPlaceholders.map(p => new BookmarkDynamicPlaceholder(p, "")));
   const [url, setUrl] = useState(bookmark.baseUrl);
+  const firstInputRef = useRef<HTMLInputElement>(null); // Reference for the first input field
+
+  useEffect(() => {
+    // Focus on the first input field when the component mounts, after a small delay
+    const timer = setTimeout(() => {
+      if (firstInputRef.current) {
+        firstInputRef.current.focus();
+      }
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleInputChange = (placeholder: string, value: string) => {
     setPlaceholderValues(prevValues => ({
@@ -23,8 +35,8 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
     }));
     
     const newDynamicPlaceholders = dynamicPlaceholders.map(
-        p => p.placeholder === placeholder ? new BookmarkDynamicPlaceholder(placeholder, value) : p
-    )
+      p => p.placeholder === placeholder ? new BookmarkDynamicPlaceholder(placeholder, value) : p
+    );
 
     setDynamicPlaceholders(newDynamicPlaceholders);
     const newUrl = bookmark.getUrlForSelectedShorctut(newDynamicPlaceholders);
@@ -43,12 +55,13 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
           <div className="modal-header">
             <h2>Enter URL values</h2>
           </div>
-          <div style={{ paddingLeft: '20px', textAlign: 'left'  }} className="modal-content">
+          <div style={{ paddingLeft: '20px', textAlign: 'left' }} className="modal-content">
             <p style={{ textAlign: 'left' }} className="modalText">{url}</p>
-            {unpopulatedPlaceholders.map(placeholder => (
-              <div key={placeholder} className="form-group" style={{marginBottom: '0px'}}>
+            {unpopulatedPlaceholders.map((placeholder, index) => (
+              <div key={placeholder} className="form-group" style={{ marginBottom: '0px' }}>
                 <label>{placeholder}: </label>
                 <input
+                  ref={index === 0 ? firstInputRef : null} // Attach ref to the first input field
                   type="text"
                   value={placeholderValues[placeholder] || ''}
                   onChange={(e) => handleInputChange(placeholder, e.target.value)}

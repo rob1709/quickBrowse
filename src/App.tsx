@@ -45,6 +45,7 @@ function App() {
   const bookmarkSelected = (selectedBookmark: Bookmark) => {
 
     if (selectedBookmark.dynamicPlaceholders.length > 0 ) {
+      setShortcutsActive(false);
       setSelectedBookmark(selectedBookmark);
       setPlaceholderModalOpen(true);
     } else {
@@ -104,6 +105,11 @@ function App() {
     storageManager.saveQuickBrowseProfile(quickBrowseProfile);
   }
 
+  const closePlaceholderModal = () => {
+    handleShortcutsEnabled();
+    setPlaceholderModalOpen(false);
+  }
+
   return (
     <div className="App">
 
@@ -118,10 +124,10 @@ function App() {
         bookmarkCollectionChanged={handleBookmarkCollectionChanged}
         bookmarkSelected={bookmarkSelected}
       />
-      <div className={`modal-overlay ${placeholderModalOpen ? 'active' : ''}`} onClick={() => setPlaceholderModalOpen(false)}></div>
+      <div className={`modal-overlay ${placeholderModalOpen ? 'active' : ''}`} onClick={() => closePlaceholderModal()}></div>
       {placeholderModalOpen && (
-        <DynamicUrlBuilder bookmark={selectedBookmark} onCancel={() => setPlaceholderModalOpen(false)} 
-                          onConfirm={(bookmark, dynamicPlaceholders) => { setPlaceholderModalOpen(false); navigateToSelection(bookmark, dynamicPlaceholders); }} />
+        <DynamicUrlBuilder bookmark={selectedBookmark} onCancel={() => closePlaceholderModal()} 
+                          onConfirm={(bookmark, dynamicPlaceholders) => { closePlaceholderModal(); navigateToSelection(bookmark, dynamicPlaceholders); }} />
       )}
     </div>
   );
