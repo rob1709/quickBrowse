@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import './styles/App.css';
 import './styles/colourThemes.css';
 import './styles/addOrEditModal.css';
@@ -24,7 +24,6 @@ function App() {
   const localStorageManager = useMemo(() => new LocalBookmarkLoader(), []);
   const browserStorageManager = useMemo(() => new BrowserManagedStorageManager(), []);
   const storageManager: QuickBrowseStorageManager = localMode ? localStorageManager : browserStorageManager ;
-  
 
   useEffect(() => {
     // Load bookmarks from storage on startup
@@ -36,24 +35,15 @@ function App() {
     loadBookmarks();
   }, [storageManager]);
 
-  function handleSwitchToNewCollection(collection: BookmarkCollection) {
+  const handleSwitchToNewCollection = useCallback((collection: BookmarkCollection) => {
     const newProfile = new QuickBrowseProfle(quickBrowseProfile.collections, collection);
     setQuickBrowseProfile(newProfile);
     storageManager.saveQuickBrowseProfile(newProfile);
-  }
+  }, [quickBrowseProfile, storageManager]);
 
-  const bookmarkSelected = (selectedBookmark: Bookmark) => {
 
-    if (selectedBookmark.dynamicPlaceholders.length > 0 ) {
-      setShortcutsActive(false);
-      setSelectedBookmark(selectedBookmark);
-      setPlaceholderModalOpen(true);
-    } else {
-      navigateToSelection(selectedBookmark, []);
-    }
-  }
 
-  function navigateToSelection(selectedBookmark: Bookmark, populatedPlaceholders: BookmarkDynamicPlaceholder[]) {
+  const navigateToSelection = useCallback((selectedBookmark: Bookmark, populatedPlaceholders: BookmarkDynamicPlaceholder[]) => {
     if (selectedBookmark) {
       const url = selectedBookmark?.getUrlForSelectedShorctut([]);
 
@@ -61,29 +51,38 @@ function App() {
         alert(selectedBookmark?.name + ": " + url);
       } else if (selectedBookmark !== undefined && window.browser) {
         window.browser.tabs.update({ url: selectedBookmark.baseUrl }).then(() => {
-        window.close();
+          window.close();
         });
       }
     }
-  }
+  }, [localMode]);
+  
+  const bookmarkSelected = useCallback((selectedBookmark: Bookmark) => {
+    if (selectedBookmark.dynamicPlaceholders.length > 0 ) {
+      setShortcutsActive(false);
+      setSelectedBookmark(selectedBookmark);
+      setPlaceholderModalOpen(true);
+    } else {
+      navigateToSelection(selectedBookmark, []);
+    }
+  }, [navigateToSelection]);
 
   useEffect(() => {
-    const handleKeyDown = (event : KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (shortcutsActive && event.key.length === 1) {
         const selectedBookmark = quickBrowseProfile.activeCollection.findBookmarkForKeyboardShortcut(event.key);
         if (selectedBookmark) {
           bookmarkSelected(selectedBookmark);
         }
-      };
-
-    }
+      }
+    };
 
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [shortcutsActive, quickBrowseProfile.activeCollection, localMode]);
+  }, [shortcutsActive, quickBrowseProfile.activeCollection, bookmarkSelected]);
 
   const handleShortcutsDisabled = () => {
     setShortcutsActive(false);
