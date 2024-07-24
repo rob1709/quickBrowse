@@ -16,6 +16,7 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
   const [dynamicPlaceholders, setDynamicPlaceholders] = useState<BookmarkDynamicPlaceholder[]>(bookmark.dynamicPlaceholders.map(p => new BookmarkDynamicPlaceholder(p, "")));
   const [url, setUrl] = useState(bookmark.baseUrl);
   const firstInputRef = useRef<HTMLInputElement>(null); // Reference for the first input field
+  const confirmButtonRef = useRef<HTMLButtonElement>(null); // Reference for the "Yes" button
 
   useEffect(() => {
     // Focus on the first input field when the component mounts, after a small delay
@@ -26,6 +27,24 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
     }, 0);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // Handle Enter key press
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent default Enter key behavior if needed
+        if (confirmButtonRef.current) {
+          confirmButtonRef.current.click(); // Simulate button click
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const handleInputChange = (placeholder: string, value: string) => {
@@ -69,7 +88,7 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
               </div>
             ))}
             <div className="modal-buttons">
-              <button onClick={handleConfirm}>Yes</button>
+              <button ref={confirmButtonRef} onClick={handleConfirm}>Yes</button>
               <button onClick={onCancel} className="cancel-button">No</button>
             </div>
           </div>

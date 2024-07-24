@@ -15,7 +15,8 @@ import { BookmarkDynamicPlaceholder } from './model/BookmarkDynamicPlaceholder';
 
 function App() {
 
-  const [quickBrowseProfile, setQuickBrowseProfile] = useState<QuickBrowseProfle>(new QuickBrowseProfle([], new BookmarkCollection("", "", [])));
+  const defaultCollection = new BookmarkCollection("Default", "fa-bookmark", []);
+  const [quickBrowseProfile, setQuickBrowseProfile] = useState<QuickBrowseProfle>(new QuickBrowseProfle([defaultCollection], defaultCollection ));
   const [shortcutsActive, setShortcutsActive] = useState(true);
   const [placeholderModalOpen, setPlaceholderModalOpen] = useState(false);
   const [selectedBookmark, setSelectedBookmark] = useState<Bookmark>(new Bookmark("", "", ""));
@@ -45,12 +46,12 @@ function App() {
 
   const navigateToSelection = useCallback((selectedBookmark: Bookmark, populatedPlaceholders: BookmarkDynamicPlaceholder[]) => {
     if (selectedBookmark) {
-      const url = selectedBookmark?.getUrlForSelectedShorctut([]);
+      const url = selectedBookmark?.getUrlForSelectedShorctut(populatedPlaceholders);
 
       if (localMode) {
         alert(selectedBookmark?.name + ": " + url);
-      } else if (selectedBookmark !== undefined && window.browser) {
-        window.browser.tabs.update({ url: selectedBookmark.baseUrl }).then(() => {
+      } else if (window.browser) {
+        window.browser.tabs.update({ url: url }).then(() => {
           window.close();
         });
       }
