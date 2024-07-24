@@ -20,7 +20,7 @@ function App() {
   const [placeholderModalOpen, setPlaceholderModalOpen] = useState(false);
   const [selectedBookmark, setSelectedBookmark] = useState<Bookmark>(new Bookmark("", "", ""));
 
-  const localMode = true;
+  const localMode = false;
   const localStorageManager = useMemo(() => new LocalBookmarkLoader(), []);
   const browserStorageManager = useMemo(() => new BrowserManagedStorageManager(), []);
   const storageManager: QuickBrowseStorageManager = localMode ? localStorageManager : browserStorageManager ;
@@ -56,7 +56,7 @@ function App() {
       }
     }
   }, [localMode]);
-  
+
   const bookmarkSelected = useCallback((selectedBookmark: Bookmark) => {
     if (selectedBookmark.dynamicPlaceholders.length > 0 ) {
       setShortcutsActive(false);
