@@ -13,19 +13,13 @@ interface BookmarkButtonProps {
 }
 
 export function BookmarkButton({ bookmark, onSelect, onEditClick, onDeleteClick }: BookmarkButtonProps) {
-  const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    event.preventDefault();
-    browser.tabs.update({ url: bookmark.baseUrl }).then(() => {
-      window.close();
-    });
-  };
 
   return (
     <div className="bookmark-button">
       <a
         target="_self"
         rel="noopener noreferrer"
-        className="bookmark-text"
+        className="bookmark-text clickable"
         onClick={() => onSelect(bookmark)}
       >
         <img src={bookmark.favicon} alt={`${bookmark.name.charAt(0)}`} className="bookmark-icon" />

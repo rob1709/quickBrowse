@@ -1,6 +1,6 @@
 import { useState } from "react";
 import '../styles/profileSelector.css';
-import { AddOrEditCollectionModal } from "./AddOrEditProfileModal";
+import { AddOrEditCollectionModal } from "./AddOrEditCollectionModal";
 import { BookmarkCollection } from "../model/BookmarkCollection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faPen } from "@fortawesome/free-solid-svg-icons";

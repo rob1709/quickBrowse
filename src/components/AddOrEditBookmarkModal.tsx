@@ -1,5 +1,4 @@
-// src/components/AddOrEditBookmarkModal.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bookmark } from '../model/Bookmark';
 import '../styles/colourThemes.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,9 +19,23 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed,
   const [url, setUrl] = useState(bookmark.baseUrl);
   const [shortcutKey, setShortcutKey] = useState(bookmark.shortcutKey);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Enter") {
+        handleConfirm();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [name, url, shortcutKey]); // Add dependencies to ensure the latest state is used
+
   const handleConfirm = () => {
     const updatedBookmark = new Bookmark(name, url, shortcutKey);
-    var validationResult = validateRequest(updatedBookmark);
+    const validationResult = validateRequest(updatedBookmark);
     if (validationResult === undefined) {
       bookmarkChanged(bookmark, updatedBookmark);
     } else {
@@ -46,7 +59,7 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed,
   return (
     <div className="add-edit-modal">
       <div className="modal-header">
-        <h2>{addMode ? "Add" : "Edit" } Bookmark</h2>
+        <h2>{addMode ? "Add" : "Edit"} Bookmark</h2>
         <button className="close-button" onClick={modalClosed}>
           <FontAwesomeIcon icon={faXmark} />
         </button>

@@ -1,9 +1,7 @@
-// src/components/BookmarkButton.tsx
-import { Bookmark } from '../model/Bookmark';
 import '../styles/App.css';
 import '../styles/colourThemes.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookBookmark, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 interface BookmarkButtonProps {
   onClick: () => void;
@@ -11,9 +9,14 @@ interface BookmarkButtonProps {
 
 export function AddBookmarkButton({onClick}: BookmarkButtonProps) {
 
+  // eslint-disable-next-line
   return (
+    
     <div className="bookmark-button-add" onClick={onClick}>
-      <a>
+      
+      <a rel="noopener noreferrer"
+        className="bookmark-text clickable">
+        
       
       <FontAwesomeIcon icon={faPlus} className="bookmark-icon" />
       Add bookmark...

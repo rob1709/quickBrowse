@@ -88,8 +88,8 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
               </div>
             ))}
             <div className="modal-buttons">
-              <button ref={confirmButtonRef} onClick={handleConfirm}>Yes</button>
-              <button onClick={onCancel} className="cancel-button">No</button>
+              <button ref={confirmButtonRef} onClick={handleConfirm}>OK</button>
+              <button onClick={onCancel} className="cancel-button">Cancel</button>
             </div>
           </div>
         </div>
