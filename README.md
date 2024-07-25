@@ -1,8 +1,10 @@
 # QuickBrowse
 
+## Overview 
+
 Firefox extension to allow quick navigation to bookmarked web pages via keyboard shortcuts.
 
-<img width="752" alt="image" src="https://github.com/user-attachments/assets/1db51d09-4263-45a7-80d1-9f94cbc4bd1a">
+https://github.com/user-attachments/assets/b7e09e7d-afe9-4d9d-9139-bc393b8a414e
 
 # Build Guide
 
