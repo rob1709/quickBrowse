@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Bookmark } from '../model/Bookmark';
 import { BookmarkDynamicPlaceholder } from '../model/BookmarkDynamicPlaceholder';
 import '../styles/App.css';
@@ -16,10 +16,9 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
   const [dynamicPlaceholders, setDynamicPlaceholders] = useState<BookmarkDynamicPlaceholder[]>(bookmark.dynamicPlaceholders.map(p => new BookmarkDynamicPlaceholder(p, "")));
   const [url, setUrl] = useState(bookmark.baseUrl);
   const firstInputRef = useRef<HTMLInputElement>(null); // Reference for the first input field
-  const confirmButtonRef = useRef<HTMLButtonElement>(null); // Reference for the "Yes" button
 
   useEffect(() => {
-    // Focus on the first input field when the component mounts, after a small delay
+    // Focus on the first input field when the component mounts
     const timer = setTimeout(() => {
       if (firstInputRef.current) {
         firstInputRef.current.focus();
@@ -29,25 +28,7 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    // Handle Enter key press
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent default Enter key behavior if needed
-        if (confirmButtonRef.current) {
-          confirmButtonRef.current.click(); // Simulate button click
-        }
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
-  const handleInputChange = (placeholder: string, value: string) => {
+  const handleInputChange = useCallback((placeholder: string, value: string) => {
     setPlaceholderValues(prevValues => ({
       ...prevValues,
       [placeholder]: value
@@ -61,11 +42,12 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
     const newUrl = bookmark.getUrlForSelectedShorctut(newDynamicPlaceholders);
 
     setUrl(newUrl);
-  };
+  }, [dynamicPlaceholders, bookmark]);
 
-  const handleConfirm = () => {
+  const handleConfirm = useCallback((event: React.FormEvent) => {
+    event.preventDefault(); // Prevent default form submission
     onConfirm(bookmark, dynamicPlaceholders);
-  };
+  }, [bookmark, dynamicPlaceholders, onConfirm]);
 
   return (
     <div className='modal-content'>
@@ -74,10 +56,10 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
           <div className="modal-header">
             <h2>Enter URL values</h2>
           </div>
-          <div style={{ paddingLeft: '20px', textAlign: 'left' }} className="modal-content">
-            <p style={{ textAlign: 'left' }} className="modalText">{url}</p>
+          <form className="modal-form" onSubmit={handleConfirm} style={{ paddingLeft: '20px', textAlign: 'left' }}>
+            <p className="modalText" style={{marginBottom: '20px', textAlign: 'left', fontWeight: '250'}}>{url}</p>
             {unpopulatedPlaceholders.map((placeholder, index) => (
-              <div key={placeholder} className="form-group" style={{ marginBottom: '0px' }}>
+              <div key={placeholder} className="form-group">
                 <label>{placeholder}: </label>
                 <input
                   ref={index === 0 ? firstInputRef : null} // Attach ref to the first input field
@@ -88,10 +70,10 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
               </div>
             ))}
             <div className="modal-buttons">
-              <button ref={confirmButtonRef} onClick={handleConfirm}>OK</button>
-              <button onClick={onCancel} className="cancel-button">Cancel</button>
+              <button type="submit">OK</button>
+              <button type="button" onClick={onCancel} className="cancel-button">Cancel</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
