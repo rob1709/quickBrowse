@@ -6,6 +6,13 @@ Firefox extension to allow quick navigation to bookmarked web pages via keyboard
 
 https://github.com/user-attachments/assets/b7e09e7d-afe9-4d9d-9139-bc393b8a414e
 
+## Dynamic Bookmarks
+
+Dynamic bookmarks allow you to replace part of a bookmark when using a shortcut:
+
+https://github.com/user-attachments/assets/245ff8d9-30c4-4bb5-91a4-f207deb43d5e
+
+
 # Build Guide
 
 From the root folder, run:
