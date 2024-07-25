@@ -31,6 +31,9 @@ if [ "$version" == "null" ]; then
   exit 1
 fi
 
+# Build the project
+npm run build
+
 # Create the releases folder with version number
 mkdir -p "$RELEASE_FOLDER/$version"
 
