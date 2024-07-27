@@ -13,17 +13,19 @@ Dynamic bookmarks allow you to replace part of a bookmark when using a shortcut:
 https://github.com/user-attachments/assets/245ff8d9-30c4-4bb5-91a4-f207deb43d5e
 
 
-# Build Guide
+# Build / Release Guide
 
 From the root folder, run:
 
-`npm run build`
+./build.sh
 
-This generates a build folder. Zip the contents of this (note the contents, not the folder itself; Firefox requires manifest.json to sit in the root once unzipped). 
+This will generate folder releases/{versionNumber}, e.g. releases/2.2.1.
 
-Upload to Firefox's dev / extension hub: https://addons.mozilla.org. You'll also need to upload the raw source code too. Do this by zipping the contents, excluding build, npm modules, and releases (firefox limit the size of the zipped source folder, could probably exclude more I expect, e.g. package lock etc).
+Go to https://addons.mozilla.org/en-GB/developers/addon/quickbrowse/edit.
 
-I added the following notes for the review:
+Upload release.zip as the new version of the extension, and code.zip as the source code
+
+Add the following review notes:
 
 From root, do npm run build, and use index.html as the add-on.
 I used npm version 9.5.1, node version 18.16.0
