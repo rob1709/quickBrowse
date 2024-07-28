@@ -15,10 +15,9 @@ export function DynamicUrlBuilder({ bookmark, onCancel, onConfirm }: DynamicUrlB
   const [placeholderValues, setPlaceholderValues] = useState<{ [key: string]: string }>({});
   const [dynamicPlaceholders, setDynamicPlaceholders] = useState<BookmarkDynamicPlaceholder[]>(bookmark.dynamicPlaceholders.map(p => new BookmarkDynamicPlaceholder(p, "")));
   const [url, setUrl] = useState(bookmark.baseUrl);
-  const firstInputRef = useRef<HTMLInputElement>(null); // Reference for the first input field
+  const firstInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Focus on the first input field when the component mounts
     const timer = setTimeout(() => {
       if (firstInputRef.current) {
         firstInputRef.current.focus();

@@ -39,6 +39,7 @@ export function AddOrEditCollectionModal({ collection: profile, collectionChange
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              autoFocus={true}
             />
           </div>
 

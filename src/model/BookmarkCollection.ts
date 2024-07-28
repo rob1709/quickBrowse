@@ -72,6 +72,4 @@ export class BookmarkCollection {
             return keyPress.toUpperCase();
         }   
     }
-      
-
 }

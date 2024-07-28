@@ -21,6 +21,21 @@ a {
   margin: 20px;
 }
 
+.input-help {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  text-align: left;
+  margin-left: 8px;
+  color: var(--subtle-text-color);
+  cursor: pointer;
+  font-weight: 200;
+}
+
+.input-help:hover {
+  color: var(--icon-color);
+}
+
 .bookmark-panel {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -126,7 +141,12 @@ h1 {
   
 }
 
+.image-container {
+  margin: 10px;
+  text-align: center;
+}
 
-
-
-
+.dynamic-shortcut-image {
+  border: 2px solid var(--icon-color); 
+  border-radius: 8px;    
+}

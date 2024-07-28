@@ -2,8 +2,10 @@ import React, { useState, useCallback } from 'react';
 import { Bookmark } from '../model/Bookmark';
 import '../styles/colourThemes.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTimes, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faXmark, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { BookmarkCollection } from '../model/BookmarkCollection';
+import { Tooltip } from 'react-tooltip';
+import setupDynamicShortcutImage from '../images/setupDynamicShortcut.png'; 
 
 interface AddOrEditBookmarkModalProps {
   bookmark: Bookmark;
@@ -61,6 +63,7 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed,
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              autoFocus={true}
             />
           </div>
 
@@ -72,7 +75,18 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed,
               onChange={(e) => setUrl(e.target.value)}
               style={{ width: '450px' }} 
             />
+            <span className='input-help'>
+            <FontAwesomeIcon  icon={faCircleInfo}/><span style={{marginLeft: '5px'}} >Dynamic URLs</span>
+            <Tooltip anchorSelect=".input-help" place="left" style={{maxWidth:550}}>
+              <h3>Dynamic Bookmarks</h3>
+              Use braces to add dynamic placeholders (e.g. amazon.co.uk/s?k={"{Search}"}). You can enter these when opening the bookmark.
+              <div className="image-container">
+                <img src={setupDynamicShortcutImage} alt="Setup Dynamic Shortcut" width={'500px'} className="dynamic-shortcut-image" />
+              </div>
+           </Tooltip>
+            </span>
           </div>
+
 
           <div className="form-group">
             <label>Shortcut:</label>
