@@ -97,7 +97,7 @@ export function AddOrEditBookmarkModal({ bookmark, bookmarkChanged, modalClosed,
               <FontAwesomeIcon icon={faCircleInfo} />
               <span style={{ marginLeft: '5px' }} >Advanced</span>
 
-              <Tooltip anchorSelect=".input-help" place="left" className='tooltipModal' style={{ maxWidth: 550, minHeight:420, borderRadius: 12, opacity: "100%" }}>
+              <Tooltip anchorSelect=".input-help" place="left" className='tooltipModal' style={{ maxWidth: 400, minHeight:350, borderRadius: 12, opacity: "100%" }}>
                 <h3>Dynamic Bookmarks</h3>
                 Use braces to add dynamic placeholders (e.g. amazon.co.uk/s?k={"{Search}"}). You can enter these when opening the bookmark:
                 

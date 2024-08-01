@@ -137,7 +137,6 @@ h1 {
 
 .headerBar {
   background-color: var(--header-background);
-  
 }
 
 .image-container {
@@ -148,7 +147,7 @@ h1 {
 .dynamic-shortcut-image {
   border: 2px solid var(--icon-color); 
   border-radius: 8px;   
-  width: 500px; 
+  width: 380px; 
 }
 
 .dynamic-shortcut-image {
@@ -160,7 +159,7 @@ h1 {
 
 .image-container {
   position: relative;
-  width: 500px;
+  width: 380px;
   height: auto;
 }
 
@@ -193,8 +192,7 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  width: 500px;
-  height: 300px;
+  width: 380px;
 }
 
 .each-slide p {
