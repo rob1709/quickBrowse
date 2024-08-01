@@ -23,7 +23,7 @@ export class Bookmark {
     public getUrlForSelectedShorctut(placeholders: BookmarkDynamicPlaceholder[]) {
         var result = this.baseUrl;
         placeholders.forEach(placeholder => {
-            result = result.replace("{" + placeholder.placeholder + "}", placeholder.value)
+            result = result.replace("{" + placeholder.placeholder + "}", encodeURIComponent(placeholder.value))
         });
         return result;
     }

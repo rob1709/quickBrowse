@@ -10,7 +10,8 @@ When('the extension is open and I press {string}', (keyPress: string) => {
 })
 
 Then('the URL is {string}', (expectedUrl: string) => {
-  assert.equal(TestContext.instance.selectedBookmark?.getUrlForSelectedShorctut(TestContext.instance.placeholders), expectedUrl);
+  const actual = TestContext.instance.selectedBookmark?.getUrlForSelectedShorctut(TestContext.instance.placeholders);
+  assert.equal(actual, expectedUrl,  'Actual: ' + actual + ". Expected:" + expectedUrl);
 })
 
 When('I set placeholder {string} to {string}', (placeholder: string, value: string) => {

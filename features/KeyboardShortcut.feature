@@ -36,3 +36,11 @@ Scenario: Shortcuts can contain dynamic placeholders
   And I set placeholder 'Item ID' to '363'
   And I set placeholder 'Country Code' to 'GB'
   Then the URL is 'https://www.amazon.co.uk/item/363/country/GB'
+
+Scenario: Replacements are encoded 
+  Given I have an empty list of bookmarks
+  And I add a bookmark called 'Amazon' for 'www.amazon#.co.uk/item/{Item ID}/country/{Country Code}' with shortcut 'a'
+  When the extension is open and I press 'a'
+  And I set placeholder 'Item ID' to '#23'
+  And I set placeholder 'Country Code' to '#24'
+  Then the URL is 'https://www.amazon#.co.uk/item/%2323/country/%2324'  

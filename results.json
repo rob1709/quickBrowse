@@ -4,87 +4,87 @@
     "elements": [
       {
         "description": "",
-        "id": "keyboard-shortcuts;shortcuts-can-contain-dynamic-placeholders",
+        "id": "keyboard-shortcuts;replacements-are-encoded",
         "keyword": "Scenario",
-        "line": 32,
-        "name": "Shortcuts can contain dynamic placeholders",
+        "line": 40,
+        "name": "Replacements are encoded",
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 33,
+            "line": 41,
             "name": "I have an empty list of bookmarks",
             "match": {
               "location": "features/step_definitions/AddingBookmarksSetps.ts:6"
             },
             "result": {
               "status": "passed",
-              "duration": 435582
+              "duration": 415709
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 34,
-            "name": "I add a bookmark called 'Amazon' for 'www.amazon.co.uk/item/{Item ID}/country/{Country Code}' with shortcut 'a'",
+            "line": 42,
+            "name": "I add a bookmark called 'Amazon' for 'www.amazon#.co.uk/item/{Item ID}/country/{Country Code}' with shortcut 'a'",
             "match": {
               "location": "features/step_definitions/AddingBookmarksSetps.ts:14"
             },
             "result": {
               "status": "passed",
-              "duration": 382750
+              "duration": 269040
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 35,
+            "line": 43,
             "name": "the extension is open and I press 'a'",
             "match": {
               "location": "features/step_definitions/KeyboardShortcuts.ts:7"
             },
             "result": {
               "status": "passed",
-              "duration": 101583
+              "duration": 161291
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 36,
-            "name": "I set placeholder 'Item ID' to '363'",
+            "line": 44,
+            "name": "I set placeholder 'Item ID' to '#23'",
             "match": {
-              "location": "features/step_definitions/KeyboardShortcuts.ts:16"
+              "location": "features/step_definitions/KeyboardShortcuts.ts:17"
             },
             "result": {
               "status": "passed",
-              "duration": 175041
+              "duration": 203791
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 37,
-            "name": "I set placeholder 'Country Code' to 'GB'",
+            "line": 45,
+            "name": "I set placeholder 'Country Code' to '#24'",
             "match": {
-              "location": "features/step_definitions/KeyboardShortcuts.ts:16"
+              "location": "features/step_definitions/KeyboardShortcuts.ts:17"
             },
             "result": {
               "status": "passed",
-              "duration": 68792
+              "duration": 51416
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 38,
-            "name": "the URL is 'https://www.amazon.co.uk/item/363/country/GB'",
+            "line": 46,
+            "name": "the URL is 'https://www.amazon#.co.uk/item/%2323/country/%2324'",
             "match": {
               "location": "features/step_definitions/KeyboardShortcuts.ts:12"
             },
             "result": {
               "status": "passed",
-              "duration": 213250
+              "duration": 206292
             }
           }
         ],
