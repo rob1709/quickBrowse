@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "QuickBrowse",
   "description": "Quickly browse to bookmarks (web pages) using keyboard shortcuts",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "homepage_url": "https://github.com/rob1709/quickBrowse",
   "applications": {
     "gecko": {
